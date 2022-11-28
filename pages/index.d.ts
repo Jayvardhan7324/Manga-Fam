@@ -1,0 +1,1 @@
+type MODE = "LIGHT" | "DARK"

@@ -1,9 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.light {
+  --primary-bg-color: #FFFFFF;
+  --secondary-bg-color: #ece7e7;
+  --primary-text-color: #9400D1;
+  --secondary-text-color: #8E44AD;
+  --gray-text-color: #697E84;
+  --dark-text-color: #1A1A1A;
+  --active-tag-color: #c6cdd0;
+  --active-navigation-bg-color: #D9D9D9;
+  --skeleton-bg-color: #D9D9D9;
+  --filter-popup-bg-color: #D9D9D9;
+
+  background-color: var(--primary-bg-color);
+}
+
+.dark {
+  --primary-bg-color: #1A1A1A;
+  --secondary-bg-color: #282C2D;
+  --tertiary-bg-color: #4B4B4B;
+  --primary-text-color: #D9D9D9;
+  --gray-text-color: #697E84;
+  --active-navigation-bg-color: #4B4B4B;
+  --skeleton-bg-color: #4B4B4B;
+  --filter-popup-bg-color: #282C2D;
+
+  background-color: var(--primary-bg-color);
+}
+
+.logo {
+  fill: var(--primary-text-color) !important;
+}
+
+.primary {
+  color: var(--primary-text-color);
+}
+
+.primary_icon {
+  fill: var(--primary-text-color);
+}
+
+.icon {
+  @apply p-1 md:p-2;
+  border-radius: 50%;
+}
+
+.light .icon {
+  background-color: var(--secondary-bg-color);
+}
+
+.dark .icon {
+  background-color: var(--secondary-bg-color);
+}
+
+.icon:hover {
+  background-color: var(--tertiary-bg-color);
 }
 
 a {
@@ -11,16 +73,294 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a, button {
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.nav_wrapper {
+  background-color: var(--primary-bg-color);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: var(--secondary-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 6px;
+  height: 6px;
+  border-radius: 4px;
+  background-color: var(--skeleton-bg-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-text-color);
+}
+
+.light .active_nav {
+  background-color: var(--active-navigation-bg-color);
+}
+
+.dark .active_nav {
+  background-color: var(--active-navigation-bg-color);
+}
+
+.hidden_scroll::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.hidden_scroll::-webkit-scrollbar-thumb {
+  width: 0px;
+  height: 0px;
+}
+
+.light .active_tag {
+  background-color: var(--active-tag-color);
+}
+
+.dark .active_tag {
+  background-color: var(--tertiary-bg-color);
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--skeleton-bg-color);
+}
+
+.skeleton::before {
+  content: "";
+  z-index: 10;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 0.8s infinite forwards;
+}
+
+.light .skeleton:before {
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.slider_card {
+  flex-shrink: 0;
+  width: 500px;
+  height: 300px;
+}
+
+@keyframes shine {
+  0% {
+    translate: -100% 0%;
   }
+  100% {
+    translate: 200% 0%;
+  }
+}
+
+.manga-card {
+  width: 180px;
+  aspect-ratio: 0.6;
+}
+
+.manga-element {
+  max-height: 400px;
+}
+
+.skeleton-card {
+  width: 180px;
+  height: 250px;
+}
+
+.main_wrapper {
+  height: 100vh;
+}
+
+
+.filter_popup {
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  z-index: 100;
+
+  translate: 0% 100%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  
+  width: min(100vw, 300px);
+
+  background-color: var(--filter-popup-bg-color);
+}
+
+.filter_apply_button {
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-text-color); 
+}
+
+.filter_apply_button:hover {
+  background-color: #4B4B4B;
+}
+
+.active_filter_option {
+  background-color: var(--active-navigation-bg-color);
+}
+
+.manga_text {
+  max-width: 200px !important;
+}
+
+.chapters_wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  width: 100%;
+  height: calc(100vh - 100px);
+}
+
+.page_wrapper {
+  max-height: calc(100vh - 100px);
+}
+
+.main_wrapper {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.anim_on_click {
+  position: relative;
+}
+
+.anim_on_click:active::before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: solid 1px transparent;
+  background-color: transparent;
+  animation: glow 0.3s ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  50% {
+    background-color: transparent;
+    border-color: #D9D9D9; 
+  }
+
+  100% {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+}
+
+.spin {
+  animation: spin 2s linear forwards infinite;
+}
+
+@keyframes spin {
+  from {
+    rotate: z 0deg;
+  }
+
+  to {
+    rotate: z 360deg;
+  }
+}
+
+.page_wrapper {
+  min-height: calc(100vh - 400px);
+  height: auto;
+  max-height: 100%;
+}
+
+.recent_item {
+  width: 450px;
+  height: 200px;
+}
+
+.favourite_item {
+  width: 200px;
+  height: 280px;
+}
+
+
+@media screen and (max-width: 750px) {
+
   body {
-    color: white;
-    background: black;
+    height: 100%;
+  }
+
+  .recent_item {
+    width: 100%;
+    height: 150px;
+  }
+
+  .chapters_wrapper {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin-left: 0px;
+    overscroll-behavior: none;
+  }
+
+  .manga-card {
+    width: 100px;
+    min-width: 0px;
+  }
+
+  .skeleton-card {
+    width: 100px;
+    height: 166px;
+  }
+
+  .slider_card {
+    width: calc(100vw - 30px);
+    height: 250px;
+  }
+
+  .manga_text {
+    max-width: 100px !important;
+  }
+
+  .filter_popup {
+    position: fixed;
+    bottom: 300px;
+    left: 0px;
+    width: 100%;
+    height: 300px;
+    z-index: 1000;
+
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+
+    background-color: var(--filter-popup-bg-color);
+  }
+
+  .favourite_item {
+    width: 118px !important;
+    height: 220px !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .favourite_item {
+    width: 190px;
+    height: 320px;
   }
 }
