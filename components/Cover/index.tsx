@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 type CoverType = {
@@ -8,9 +9,14 @@ type CoverType = {
 }
 
 const Cover: FC<CoverType> = ({ low, high, fill = "cover" }) => {
+  const [src, changeSrc] = useState<string | null>(low)
+
+  const handleError = () => {
+    high && changeSrc(high)
+  }
   return (
     <div className="relative w-full h-full">
-      <Image alt="" src={low ? low : ""} fill={true} className="object-cover" />
+      {src ? <Image alt="" src={src} fill={true} onError={handleError} className="object-cover w-full h-full" sizes="100vw" /> : null}
     </div>
   )
 }

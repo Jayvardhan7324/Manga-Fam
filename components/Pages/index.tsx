@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { type FC, useEffect, useRef, useState, forwardRef } from 'react'
+import Image from 'next/image'
 import classname from 'classnames'
 import { ModeContext } from '../../hooks/theme_provider'
 import NavLink from '../NavLink'
@@ -15,26 +16,10 @@ interface MangaPageType {
 
 const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
   const [retry, changeRetry] = useState(false)
-  const [loading, changeLoading] = useState(false)
-  const image = useRef<HTMLImageElement | null>(null)
 
-  useEffect(() => {
-    const handleError = (event: any) => {
-      changeRetry(true)
-    }
-
-    const handleLoad = (event: any) => {
-      changeLoading(true)
-
-      if (image.current?.naturalHeight || image.current?.naturalWidth) changeLoading(false)
-    }
- 
-    if (image.current) {
-      image.current.onerror = handleError
-
-      image.current.onload = handleLoad
-    }
-  }, [image])
+  const handleError = (event: any) => {
+    changeRetry(true)
+  }
 
   const handleRetryClick = () => {
     changeRetry(false)
@@ -43,7 +28,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
-        <div data-index={index + 1} className="flex-shrink-0 relative max-w-2xl page_wrapper">
+        <div data-index={index + 1} className="w-full h-full page_wrapper">
           {retry ? (
             <div className="flex-shrink-0 flex flex-row flex-nowrap items-center justify-center">
               <button
@@ -59,20 +44,10 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               </button>
             </div>
           ) : (
-            <picture>
-              <source srcSet={dataSaver} media="(min-width:200px)"/>
-              <source srcSet={data} media="(min-width:750px)" />
-              <img ref={image} className="w-full h-full object-contain" loading="lazy" src={data} alt=""/>
-            </picture>
+            <div className="relative w-full h-full" style={{ aspectRatio: "0.8" }} >
+              <Image alt="" src={data} onError={handleError} loading="lazy" fill={true} className="object-contain w-full h-full" />
+            </div>
           )}
-
-          {
-            loading ? (
-              <div className="w-full h-full bg-4B-black absolute top-0 left-0 flex flex-row flex-nowrap items-center justify-center z-10">
-                <Spinner/>
-              </div>
-            ) : null
-          }
 
         </div>
       )}

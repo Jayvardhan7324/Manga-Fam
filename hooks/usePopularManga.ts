@@ -9,7 +9,7 @@ import * as type from '../components/utils/Manga'
  * @returns {Promise<Record<string, any>>}
  */
 const fetchPopularManga = async (): Promise<Record<string, any>> => {
-  const response = await fetch('/popular')
+  const response = await fetch('/api/popular')
   
   if (response && response.status !== 200) throw new Error("Response is not valid")
 

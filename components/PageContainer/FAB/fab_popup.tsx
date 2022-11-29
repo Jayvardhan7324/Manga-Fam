@@ -6,6 +6,7 @@ import { ModeContext } from '../../../hooks/theme_provider'
 import { useGetRecentData } from '../../../hooks/getRecentDate'
 import { type Manga } from '../../utils/Manga'
 import { useTransition, animated } from 'react-spring'
+import Cover from '../../Cover'
 import Chapters from '../../Chapters'
 import ArrowLeft from './arrow-left'
 import ArrowRight from './arrow-right'
@@ -315,10 +316,7 @@ const MangaDescription = ({ manga }: { manga: Manga }) => {
         <div className="flex flex-row flex-nowrap p-2">
           <div className="flex-shrink-0 w-24 h-36 rounded-md overflow-hidden">
             { cover_url ? (
-              <img
-                src={cover_url}
-                alt=""
-              />
+              <Cover low={cover_url} high="" />
             ) : null}
           </div>
     

@@ -29,9 +29,8 @@ const MangaCover: FC<{ manga: Manga, loading: boolean }> = ({ loading, manga }) 
         </div>
       ) : (
         <div 
-          role="Manga cover wrapper"
-          className="rounded-md overflow-hidden flex-shrink-0 m-1"
-          style={{ maxWidth: "350px" }}
+          className="rounded-md overflow-hidden m-1"
+          style={{ minWidth: "200px", maxWidth: "450px", aspectRatio: "0.8" }}
         >
           <Cover
             low={low_cover}
