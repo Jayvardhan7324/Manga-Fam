@@ -1,7 +1,13 @@
 import { Tag } from './tags'
 import DB from './DB'
 
-const MANGADEX_URL = "https://api.mangadex.org"
+const headers = new Headers()
+
+headers.append("Access-Control-Allow-Origin", "*")
+
+const Fetch = (url: URL | string) => fetch(url, { method: "GET", headers: headers })
+
+// const MANGADEX_URL = "https://api.mangadex.org"
 const FAVOURITE_KEY = "FAVOURITE"
 const RECENT_KEY = "RECENT"
 
@@ -119,7 +125,8 @@ class Manga {
    * @desc fetch the random Mangas
    */
   static async fetchMangas(offset: number, options: Options ) {
-    let fetch_url = new URL('/manga', MANGADEX_URL)
+
+    let fetch_url = new URL('/api/manga', window.location.origin)
 
     fetch_url.searchParams.append("offset", offset.toString())
     fetch_url.searchParams.append("limit", this.LIMIT.toString())
@@ -129,9 +136,7 @@ class Manga {
     // process the all the tags and add to the query
     fetch_url = processURL(fetch_url, options) 
 
-    console.log(fetch_url)
-
-    const response = await fetch(fetch_url).catch(err => console.log(err))
+    const response = await Fetch(fetch_url).catch(err => console.log(err))
 
     if (!response || response.status !== 200) throw new Error("Cannot fetch mangas")
 
@@ -147,7 +152,7 @@ class Manga {
    * @returns {any}
    */
   static async searchMangas(searchText: string, offset?: number, limit?: number) {
-    let fetch_url = new URL('/manga', MANGADEX_URL)
+    let fetch_url = new URL('/api/manga', window.location.origin)
 
     fetch_url.searchParams.append("limit", limit ? limit.toString() : this.LIMIT.toString())
     offset && fetch_url.searchParams.append("offset", offset.toString()) // offset may be undefined
@@ -156,7 +161,7 @@ class Manga {
     fetch_url.searchParams.append("includes[]", "author")
 
     // fetch the response
-    const response = await fetch(fetch_url).catch(err => console.log(err))
+    const response = await Fetch(fetch_url).catch(err => console.log(err))
 
     if (!response || response.status !== 200) throw new Error("Cannot search text")
 
@@ -172,14 +177,14 @@ class Manga {
    */
   static async getMangaAndChapters(mangaID: string) {
 
-    const url = new URL(`/manga/${mangaID}`, MANGADEX_URL)
+    const url = new URL(`/api/manga/${mangaID}`, window.location.origin)
     url.searchParams.append('includes[]', 'cover_art')
     url.searchParams.append('includes[]', 'author')
 
     const responses = await Promise.all(
       [
-        fetch(url).then(res => res.json()),
-        fetch(`${MANGADEX_URL}/manga/${mangaID}/aggregate`).then(res => res.json())
+        Fetch(url).then(res => res.json()),
+        Fetch(`/api/manga/${mangaID}/aggregate`).then(res => res.json())
       ]
     )
       .catch(err => console.error(err))
@@ -200,7 +205,7 @@ class Manga {
     const { attributes } = manga
     const { tags } = attributes
 
-    const fetch_url = new URL('/manga', MANGADEX_URL)
+    const fetch_url = new URL('/api/manga', window.location.origin)
     fetch_url.searchParams.append("offset", "0")
     fetch_url.searchParams.append("limit", "10")
     fetch_url.searchParams.append("includes[]", "cover_art")
@@ -212,7 +217,7 @@ class Manga {
         fetch_url.searchParams.append("includedTags[]", item.id)
     })
 
-    const response = await fetch(fetch_url)
+    const response = await Fetch(fetch_url)
       .catch(err => console.error(err))
 
     if (!response) throw new Error("Response is void")
@@ -228,7 +233,7 @@ class Manga {
    * @returns {Manga[]}
    */
   static getMangasByIds = async (ids: string[]): Promise<Manga[]> => {
-    const fetch_url = new URL('/manga', MANGADEX_URL)
+    const fetch_url = new URL('/api/manga', window.location.origin)
     fetch_url.searchParams.append('includes[]', 'cover_art')
     fetch_url.searchParams.append('includes[]', 'author')
 
@@ -237,7 +242,7 @@ class Manga {
       fetch_url.searchParams.append("ids[]", id)
     })
 
-    const response = await fetch(fetch_url)
+    const response = await Fetch(fetch_url)
       .then(res => res.json())
       .catch(err => console.error(err))
 

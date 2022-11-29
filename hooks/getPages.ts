@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
-const MANGADEX_URL = "https://api.mangadex.org"
-
 
 const getChapter = (chapters: any, vol: string, chapter: string) => {
   let ch = null
@@ -25,7 +23,7 @@ const getChapter = (chapters: any, vol: string, chapter: string) => {
  * @returns 
  */
 const getEnglishChapter = async (ids: string[]): Promise<any> => {
-  const url = new URL("/chapter", MANGADEX_URL)
+  const url = new URL("/chapter", window.location.origin)
   
   ids.forEach((id) => url.searchParams.append('ids[]', id))
 
@@ -49,7 +47,7 @@ const getEnglishChapter = async (ids: string[]): Promise<any> => {
  * @returns 
  */
 const getSingleChapter = async (id: string): Promise<string> => {
-  const url = new URL(`/chapter/${id}`, MANGADEX_URL)
+  const url = new URL(`/chapter/${id}`, window.location.origin)
 
   const response = await fetch(url).then(res => res.json()).catch(err => console.log(err))
 
@@ -59,7 +57,7 @@ const getSingleChapter = async (id: string): Promise<string> => {
 }
 
 const fetchPages = async (id: string) => {
-  const response = await fetch(`${MANGADEX_URL}/at-home/server/${id}`)
+  const response = await fetch(`${window.location.origin}/at-home/server/${id}`)
 
   const json = await response.json()
 

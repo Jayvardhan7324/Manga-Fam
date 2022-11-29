@@ -3,14 +3,13 @@ import Manga from '../components/utils/Manga'
 import * as type from '../components/utils/Manga'
 
 
-const JIKAN_API = "https://api.jikan.moe/v4/top/manga"
 
 /**
  * @desc Fetch the mangas from the JIKAN API
  * @returns {Promise<Record<string, any>>}
  */
 const fetchPopularManga = async (): Promise<Record<string, any>> => {
-  const response = await fetch(JIKAN_API)
+  const response = await fetch('/popular')
   
   if (response && response.status !== 200) throw new Error("Response is not valid")
 
