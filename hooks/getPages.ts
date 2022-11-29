@@ -57,7 +57,7 @@ const getSingleChapter = async (id: string): Promise<string> => {
 }
 
 const fetchPages = async (id: string) => {
-  const response = await fetch(`${window.location.origin}/at-home/server/${id}`)
+  const response = await fetch(`${window.location.origin}/api/at-home/server/${id}`)
 
   const json = await response.json()
 
