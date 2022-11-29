@@ -23,7 +23,7 @@ const getChapter = (chapters: any, vol: string, chapter: string) => {
  * @returns 
  */
 const getEnglishChapter = async (ids: string[]): Promise<any> => {
-  const url = new URL("/chapter", window.location.origin)
+  const url = new URL("/api/chapter", window.location.origin)
   
   ids.forEach((id) => url.searchParams.append('ids[]', id))
 
@@ -47,7 +47,7 @@ const getEnglishChapter = async (ids: string[]): Promise<any> => {
  * @returns 
  */
 const getSingleChapter = async (id: string): Promise<string> => {
-  const url = new URL(`/chapter/${id}`, window.location.origin)
+  const url = new URL(`/api/chapter/${id}`, window.location.origin)
 
   const response = await fetch(url).then(res => res.json()).catch(err => console.log(err))
 
