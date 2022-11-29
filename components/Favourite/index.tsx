@@ -2,7 +2,7 @@ import MangaCover from '../MangaCover'
 import * as Skeleton from '../Skeleton'
 import classname from 'classnames'
 import { ModeContext } from '../../hooks/theme_provider'
-import { useGetFavourites } from '../../hooks/getFavourite'
+import { useGetFavourites } from '../../hooks/getFavourites'
 import type { Manga } from '../utils/Manga'
 
 
@@ -25,12 +25,12 @@ const NoFavourite = () => {
 
 const Favourite = () => {
   const array = new Array(10).fill(0)
-  const [ loading, favourites, changeFavourites ] = useGetFavourites()
+  const favourites = useGetFavourites()
   return (
     <>
       <section className="flex flex-row flex-nowrap w-full h-full p-2 overflow-y-auto">
         {
-          loading ? (
+          false ? (
             array.map((_, index: number) => (
               <Skeleton.MangaCover key={index} />
             ))
