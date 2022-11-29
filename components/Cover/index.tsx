@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { FC } from 'react'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -16,9 +17,13 @@ const Cover: FC<CoverType> = ({ low, high, fill = "cover" }) => {
   }
   return (
     <div className="relative w-full h-full">
-      {src ? <Image alt="" src={src} fill={true} onError={handleError} className="object-cover w-full h-full" sizes="100vw" /> : null}
+      {src ? 
+        <img referrerPolicy='no-referrer' src={src} className="w-full h-full object-cover" alt="" />
+      : null}
     </div>
   )
 }
+
+
 
 export default Cover
