@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import Image from 'next/image'
 
 type CoverType = {
   low: string | null,
@@ -8,11 +9,9 @@ type CoverType = {
 
 const Cover: FC<CoverType> = ({ low, high, fill = "cover" }) => {
   return (
-    <picture className={`w-full h-full object-${fill}`}>
-      {low ? <source srcSet={low} media="(min-width: 0px)" /> : null}
-      {high ? <source srcSet={high} media="(min-width: 600px)" /> : null}
-      <img className="w-full h-full" style={{ objectFit: fill }} alt="" src={high || ""} />
-    </picture>
+    <div className="relative w-full h-full">
+      <Image alt="" src={low ? low : ""} fill={true} className="object-cover" />
+    </div>
   )
 }
 

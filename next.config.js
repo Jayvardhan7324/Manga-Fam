@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['uploads.mangadex.org']
+  },
   async rewrites() {
     return [{
       source: '/api/:path*',
