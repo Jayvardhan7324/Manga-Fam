@@ -45,7 +45,15 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
             </div>
           ) : (
             <div className="relative w-full h-full" style={{ aspectRatio: "0.8" }} >
-              <Image alt="" src={data} onError={handleError} loading="lazy" fill={true} className="object-contain w-full h-full" />
+              <img
+                referrerPolicy='no-referrer'
+                loading="lazy"
+                alt=""
+                src={dataSaver}
+                srcSet={`${dataSaver} 300w, ${data} 600w`}
+                sizes={`(max-width: 600px) 300px, 600px`}
+                onError={handleError}
+              />
             </div>
           )}
 

@@ -7,8 +7,11 @@ export default async function handler (
   res: NextApiResponse,
 ) {
   const response = await fetch(Fetch_URL, { method: "GET" })
-
-  console.log(await response.json())
   
-  res.status(200).send(response)
+  if (response.status === 200) {
+    const json = await response.json()
+    res.status(200).json(json)
+  }
+
+  res.status(404)
 }

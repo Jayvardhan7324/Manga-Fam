@@ -18,7 +18,7 @@ const Cover: FC<CoverType> = ({ low, high, fill = "cover" }) => {
   return (
     <div className="relative w-full h-full">
       {src ? 
-        <img referrerPolicy='no-referrer' src={src} className="w-full h-full object-cover" alt="" />
+        <img referrerPolicy='no-referrer' onError={handleError} src={src} className="w-full h-full object-cover" alt="" />
       : null}
     </div>
   )

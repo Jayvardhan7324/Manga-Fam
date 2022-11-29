@@ -110,7 +110,7 @@ const Chapters: FC<ChaptersProps> = ({ chapters, recentData, loading }) => {
             Chapters
           </h2>
             {
-              loading ? (
+              !chapters ? (
                 <Skeleton.MangaChapters/>
               ) : 
               (
