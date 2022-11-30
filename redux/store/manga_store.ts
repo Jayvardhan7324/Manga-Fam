@@ -10,8 +10,6 @@ const store = configureStore({
 store.subscribe(() => {
   const state = store.getState()
   const { favourites, recents } = state
-
-  console.log("favourites in store: ", favourites)
   Manga.setFavouriteMangas(favourites)
 })
 
