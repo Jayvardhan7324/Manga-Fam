@@ -81,7 +81,7 @@ const Pages = forwardRef<PageRef, PageProps>(function Pages({ manga, chapters, r
           <section
             ref={ref}
             className={classname(
-            "relative w-full h-fit flex flex-col flex-nowrap items-center ",
+            "manga-page-list relative w-full h-fit flex flex-col flex-nowrap items-center ",
             theme === "LIGHT" ? "bg-secondary_white" : "",
           )}>
             <NavLink manga={manga} />
