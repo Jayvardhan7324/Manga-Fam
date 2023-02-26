@@ -93,6 +93,18 @@ const SliderNav: FC<SliderNavProps> = ({ total_slider, active_slider, changeSlid
   )
 }
 
+const PopularHeader = () => {
+  return (
+    <ModeContext.Consumer>
+      {({ theme }) => (
+        <h3 className={classname("text-lg font-semibold p-3", theme === "LIGHT" ? "text-primary-color" : "text-d9-white")}>
+          Popular
+        </h3>
+      )}
+    </ModeContext.Consumer>
+  )
+}
+
 const Slider = () => {
   const total_slider = 5
   const array = new Array(5).fill(0)
@@ -106,6 +118,9 @@ const Slider = () => {
 
   return (
     <div className="flex flex-col flex-nowrap hidden_scroll">
+
+      <PopularHeader/>
+
       <div ref={container} className="flex flex-row flex-nowrap p-1 overflow-x-auto slider_wrapper hidden_scroll">
 
         {

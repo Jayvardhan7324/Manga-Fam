@@ -80,6 +80,7 @@ a, button {
 * {
   box-sizing: border-box;
   font-family: monospace;
+  scrollbar-width: thin;
   transition: background-color 0.5s ease-in-out;
 }
 
@@ -248,6 +249,11 @@ a, button {
   border: solid 1px transparent;
   background-color: transparent;
   animation: glow 0.3s ease-in-out;
+}
+
+.manga-page-list {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 @keyframes glow {

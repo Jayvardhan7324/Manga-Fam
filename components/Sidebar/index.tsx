@@ -43,8 +43,8 @@ const Vertical = () => {
                   theme === "LIGHT" ? "hover:bg-secondary_white" : "hover:bg-secondary_black"
                 )}>
               <div className='flex flex-row flex-nowrap items-center'>
-                <span className="w-6 h-6">{item.icon}</span>
-                <span className="primary text-xl font-semi-bold m-2 ml-4">{item.name}</span>
+                <span className="w-5 h-5">{item.icon}</span>
+                <span className="primary text-base font-semi-bold m-2 ml-4">{item.name}</span>
               </div>
             </li>
           </Link>
