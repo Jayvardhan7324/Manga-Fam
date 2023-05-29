@@ -59,7 +59,7 @@ const Sidebar: FC<SidebarProps> = ({ manga, chapters, loading }) => {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
-        <section className="w-80 flex-shrink-0 sticky top-0 left-0 overflow-y-auto hidden lg:block">
+        <section className="w-80 flex-shrink-0 sticky top-0 left-0 overflow-y-auto hidden scrollbar-none hidden_scroll lg:block">
           <div className="flex flex-row flex-nowrap items-center p-1">
             <Button
               label="Description"

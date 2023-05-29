@@ -32,7 +32,7 @@ const Tags = ({ theme }: { theme: "LIGHT" | "DARK" }) => {
     <section 
       ref={element}
       style={{ backgroundColor: "var(--primary-bg-color)" }} 
-      className="md:sticky z-10 md:top-0 md:left-0 overscroll-contain flex flex-row flex-nowrap items-center flex-shrink-0 overflow-x-scroll py-1 hidden_scroll"
+      className="md:sticky z-10 md:top-0 md:left-0 overscroll-contain flex flex-row flex-nowrap items-center flex-shrink-0 overflow-x-scroll py-1 hidden_scroll scrollbar-none"
     >
       {Object.keys(tag_array).map((tag: string) => (
         <span 

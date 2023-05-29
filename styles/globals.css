@@ -7,8 +7,19 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+  scrollbar-width: none;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  width: 0px;
+  height: 0px;
 }
 
 .light {
@@ -82,6 +93,10 @@ a, button {
   font-family: monospace;
   scrollbar-width: thin;
   transition: background-color 0.5s ease-in-out;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
 }
 
 .nav_wrapper {

@@ -121,7 +121,7 @@ const Slider = () => {
 
       <PopularHeader/>
 
-      <div ref={container} className="flex flex-row flex-nowrap p-1 overflow-x-auto slider_wrapper hidden_scroll">
+      <div ref={container} className="flex flex-row flex-nowrap p-1 overflow-x-auto slider_wrapper hidden_scroll scrollbar-none">
 
         {
           mangas.length > 0 ?
