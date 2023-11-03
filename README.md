@@ -19,9 +19,23 @@ The following are the screenshots of the application in desktop and mobile
 ### Desktop
 
 - Home Page
+
 ![Home Page in Dark mode](screenshots/homepage-dark.png)
+
+- Home Page(Light Mode)
+
+![Home page in Light mode](screenshots/homepage-light.png)
+
+- Manga Description Page
+
+![Manga Description Page](screenshots/manga-description-dark.png)
+
+- Manga Chapter Page
+
+![Manga Chapter page](screenshots/manga-page-dark.png)
 
 ### Mobile
 
 - Home Page
-![Home page in Dark mode for mobile](screenshots/homepage-mobile-light.png)
+
+<img src="screenshots/homepage-dark-mobile.png" height="200" />
