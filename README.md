@@ -38,4 +38,12 @@ The following are the screenshots of the application in desktop and mobile
 
 - Home Page
 
-<img src="screenshots/homepage-dark-mobile.png" height="200" />
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/homepage-dark-mobile.png" height="200" />
+
+- Manga Description Page
+
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-description-mobile-mobile-dark.png" height="200" />
+
+- Manga Chapter Page
+
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-page-mobile-dark.png" height="200" />
