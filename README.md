@@ -18,11 +18,11 @@ The following are the screenshots of the application in desktop and mobile
 
 ### Desktop
 
-- Home Page
+- Home Page (Dark Page)
 
 ![Home Page in Dark mode](screenshots/homepage-dark.png)
 
-- Home Page(Light Mode)
+- Home Page (Light Mode)
 
 ![Home page in Light mode](screenshots/homepage-light.png)
 
@@ -36,14 +36,18 @@ The following are the screenshots of the application in desktop and mobile
 
 ### Mobile
 
-- Home Page
+- Home Page (Dark Mode)
 
-<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/homepage-dark-mobile.png" height="200" />
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/homepage-mobile-dark.png" height="500" />
+
+- Home Page (Light Mode)
+
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/homepage-mobile-light.png" height="500" />
 
 - Manga Description Page
 
-<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-description-mobile-mobile-dark.png" height="200" />
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-description-mobile-dark.png" height="500" />
 
 - Manga Chapter Page
 
-<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-page-mobile-dark.png" height="200" />
+<img src="https://github.com/Deep-patra/Manga-fam/blob/main/screenshots/manga-page-mobile-dark.png" height="500" />
