@@ -28,10 +28,7 @@ const MangaCover: FC<{ manga: Manga; loading: boolean }> = ({
       {loading ? (
         <div className="skeleton rounded-lg"></div>
       ) : (
-        <div
-          className="rounded-md overflow-hidden m-1"
-          style={{ maxWidth: "300px", aspectRatio: "0.8" }}
-        >
+        <div className="rounded-md overflow-hidden m-1 max-w-[150px] md:max-w-[300px] aspect-[0.8]">
           <Cover low={low_cover} high={high_cover} />
         </div>
       )}

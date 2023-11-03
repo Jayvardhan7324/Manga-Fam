@@ -1,15 +1,11 @@
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import classname from "classnames";
 import Link from "next/link";
 import { ModeContext } from "../../hooks/theme_provider";
-import { type RecentType, type Manga } from "../utils/Manga";
+import { type Manga } from "../utils/Manga";
 import { useGetFavourites } from "../../hooks/getFavourites";
 import { useGetRecents } from "../../hooks/getRecentsManga";
 import Cover from "../Cover";
-
-interface FavouriteItemType {
-  manga: Manga;
-}
 
 const MANGADEX_URL = "https://uploads.mangadex.org";
 

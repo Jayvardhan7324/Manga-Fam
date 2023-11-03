@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { type FC, useEffect, useRef, useState, forwardRef } from "react";
-import Image from "next/image";
+import { type FC, useState, forwardRef } from "react";
 import classname from "classnames";
 import { ModeContext } from "../../hooks/theme_provider";
 import NavLink from "../NavLink";
-import Spinner from "./spinner";
 
 interface MangaPageType {
   data: string;
