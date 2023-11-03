@@ -8,8 +8,18 @@ body {
   margin: 0;
   height: 100%;
   scrollbar-width: none;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -23,29 +33,29 @@ body::-webkit-scrollbar-thumb {
 }
 
 .light {
-  --primary-bg-color: #FFFFFF;
+  --primary-bg-color: #ffffff;
   --secondary-bg-color: #ece7e7;
-  --primary-text-color: #9400D1;
-  --secondary-text-color: #8E44AD;
-  --gray-text-color: #697E84;
-  --dark-text-color: #1A1A1A;
+  --primary-text-color: #9400d1;
+  --secondary-text-color: #8e44ad;
+  --gray-text-color: #697e84;
+  --dark-text-color: #1a1a1a;
   --active-tag-color: #c6cdd0;
-  --active-navigation-bg-color: #D9D9D9;
-  --skeleton-bg-color: #D9D9D9;
-  --filter-popup-bg-color: #D9D9D9;
+  --active-navigation-bg-color: #d9d9d9;
+  --skeleton-bg-color: #d9d9d9;
+  --filter-popup-bg-color: #d9d9d9;
 
   background-color: var(--primary-bg-color);
 }
 
 .dark {
-  --primary-bg-color: #1A1A1A;
-  --secondary-bg-color: #282C2D;
-  --tertiary-bg-color: #4B4B4B;
-  --primary-text-color: #D9D9D9;
-  --gray-text-color: #697E84;
-  --active-navigation-bg-color: #4B4B4B;
-  --skeleton-bg-color: #4B4B4B;
-  --filter-popup-bg-color: #282C2D;
+  --primary-bg-color: #1a1a1a;
+  --secondary-bg-color: #282c2d;
+  --tertiary-bg-color: #4b4b4b;
+  --primary-text-color: #d9d9d9;
+  --gray-text-color: #697e84;
+  --active-navigation-bg-color: #4b4b4b;
+  --skeleton-bg-color: #4b4b4b;
+  --filter-popup-bg-color: #282c2d;
 
   background-color: var(--primary-bg-color);
 }
@@ -84,7 +94,8 @@ a {
   text-decoration: none;
 }
 
-a, button {
+a,
+button {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -92,7 +103,7 @@ a, button {
   box-sizing: border-box;
   font-family: monospace;
   scrollbar-width: thin;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .scrollbar-none {
@@ -160,12 +171,22 @@ a, button {
   left: 0px;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   animation: shine 0.8s infinite forwards;
 }
 
 .light .skeleton:before {
-  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.6), transparent);
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
 }
 
 .slider_card {
@@ -201,7 +222,6 @@ a, button {
   height: 100vh;
 }
 
-
 .filter_popup {
   position: absolute;
   bottom: -10px;
@@ -210,7 +230,7 @@ a, button {
 
   translate: 0% 100%;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-  
+
   width: min(100vw, 300px);
 
   background-color: var(--filter-popup-bg-color);
@@ -218,11 +238,11 @@ a, button {
 
 .filter_apply_button {
   background-color: var(--secondary-bg-color);
-  color: var(--primary-text-color); 
+  color: var(--primary-text-color);
 }
 
 .filter_apply_button:hover {
-  background-color: #4B4B4B;
+  background-color: #4b4b4b;
 }
 
 .active_filter_option {
@@ -234,12 +254,8 @@ a, button {
 }
 
 .chapters_wrapper {
-  position: sticky;
-  top: 0;
-  left: 0;
-  padding-top: 20px;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 10px);
 }
 
 .page_wrapper {
@@ -279,14 +295,13 @@ a, button {
 
   50% {
     background-color: transparent;
-    border-color: #D9D9D9; 
+    border-color: #d9d9d9;
   }
 
   100% {
     background-color: transparent;
     border-color: transparent;
   }
-
 }
 
 .spin {
@@ -319,9 +334,7 @@ a, button {
   height: 280px;
 }
 
-
 @media screen and (max-width: 750px) {
-
   body {
     height: 100%;
   }

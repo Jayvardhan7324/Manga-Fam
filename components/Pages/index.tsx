@@ -1,29 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-import { type FC, useEffect, useRef, useState, forwardRef } from 'react'
-import Image from 'next/image'
-import classname from 'classnames'
-import { ModeContext } from '../../hooks/theme_provider'
-import NavLink from '../NavLink'
-import Spinner from './spinner'
+import { type FC, useEffect, useRef, useState, forwardRef } from "react";
+import Image from "next/image";
+import classname from "classnames";
+import { ModeContext } from "../../hooks/theme_provider";
+import NavLink from "../NavLink";
+import Spinner from "./spinner";
 
 interface MangaPageType {
-  data: string,
-  dataSaver: string,
-  index: number,
+  data: string;
+  dataSaver: string;
+  index: number;
 }
 
-
-
 const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
-  const [retry, changeRetry] = useState(false)
+  const [retry, changeRetry] = useState(false);
 
   const handleError = (event: any) => {
-    changeRetry(true)
-  }
+    changeRetry(true);
+  };
 
   const handleRetryClick = () => {
-    changeRetry(false)
-  }
+    changeRetry(false);
+  };
 
   return (
     <ModeContext.Consumer>
@@ -34,7 +32,9 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               <button
                 className={classname(
                   "px-2 py-1 rounded-xl text-sm md:text-lg",
-                  theme === "LIGHT" ? "bg-secondary_white text-secondary_black" : "bg-4B-black text-d9-white"
+                  theme === "LIGHT"
+                    ? "bg-secondary_white text-secondary_black"
+                    : "bg-4B-black text-d9-white",
                 )}
                 role="button"
                 type="button"
@@ -44,9 +44,12 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               </button>
             </div>
           ) : (
-            <div className="relative w-full h-full" style={{ aspectRatio: "0.8" }} >
+            <div
+              className="relative w-full h-full"
+              style={{ aspectRatio: "0.8" }}
+            >
               <img
-                referrerPolicy='no-referrer'
+                referrerPolicy="no-referrer"
                 loading="lazy"
                 alt=""
                 src={dataSaver}
@@ -56,23 +59,24 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               />
             </div>
           )}
-
         </div>
       )}
     </ModeContext.Consumer>
-  )
-}
+  );
+};
 
-type PageRef = HTMLDivElement | null
-type PageProps = { manga: any, chapters: any, result: any }
+type PageRef = HTMLDivElement | null;
+type PageProps = { manga: any; chapters: any; result: any };
 
-const Pages = forwardRef<PageRef, PageProps>(function Pages({ manga, chapters, result}, ref) {
-  let chapter = result ? result.chapter : null
-  let baseURL = result ? result.baseUrl : ""
-  let hash = chapter ? chapter.hash : ""
-  let data = chapter ? chapter.data : []
-  let dataSaver = chapter ? chapter.dataSaver : []
-
+const Pages = forwardRef<PageRef, PageProps>(function Pages(
+  { manga, chapters, result },
+  ref,
+) {
+  let chapter = result ? result.chapter : null;
+  let baseURL = result ? result.baseUrl : "";
+  let hash = chapter ? chapter.hash : "";
+  let data = chapter ? chapter.data : [];
+  let dataSaver = chapter ? chapter.dataSaver : [];
 
   return (
     <ModeContext.Consumer>
@@ -81,25 +85,26 @@ const Pages = forwardRef<PageRef, PageProps>(function Pages({ manga, chapters, r
           <section
             ref={ref}
             className={classname(
-            "manga-page-list relative w-full h-fit flex flex-col flex-nowrap items-center ",
-            theme === "LIGHT" ? "bg-secondary_white" : "",
-          )}>
+              "manga-page-list relative w-full h-fit min-h-screen flex flex-col flex-nowrap items-center ",
+              theme === "LIGHT" ? "bg-secondary_white" : "",
+            )}
+          >
             <NavLink manga={manga} />
-            {chapter ? (
-              data.map((filename: string, index: number) => (
-                <MangaPage 
-                  key={index}
-                  index={index}
-                  data={`${baseURL}/data/${hash}/${filename}`}
-                  dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
-                />
-              ))
-            ) : null}
+            {chapters
+              ? data.map((filename: string, index: number) => (
+                  <MangaPage
+                    key={index}
+                    index={index}
+                    data={`${baseURL}/data/${hash}/${filename}`}
+                    dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
+                  />
+                ))
+              : null}
           </section>
         </>
       )}
     </ModeContext.Consumer>
-  )
-})
+  );
+});
 
-export default Pages
+export default Pages;
