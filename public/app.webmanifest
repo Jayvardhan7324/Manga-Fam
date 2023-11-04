@@ -1,0 +1,73 @@
+{
+  "manifest_version": 2,
+  "name": "Manga Fam",
+  "description": "A Manga reading app",
+  "background_color": "#fff",
+  "start_url": "/",
+  "id": "",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#9400d1",
+  "icons": [
+    {
+      "src": "/manifest_icons/manga_fam_144x144.svg",
+      "sizes": "144x144",
+      "type": "image/svg",
+      "purpose": "any"
+    },
+    {
+      "src": "/manifest_icons/manga_fam_48x48.svg",
+      "sizes": "48x48",
+      "type": "image/svg"
+    },
+    {
+      "src": "/manifest_icons/manga_fam_72x72.svg",
+      "sizes": "72x72",
+      "type": "image/svg"
+    },
+    {
+      "src": "/manifest_icons/manga_fam_96x96.svg",
+      "sizes": "96x96",
+      "type": "image/svg"
+    },
+    {
+      "src": "/manifest_icons/manga_fam_256x256.svg",
+      "sizes": "any",
+      "type": "image/svg"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "/manifest_screenshots/homepage-dark.png",
+      "sizes": "1364x699",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Screen"
+    },
+
+    {
+      "src": "/manifest_screenshots/homepage-light.png",
+      "sizes": "1364x699",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Screen in Light Mode"
+    },
+
+    {
+      "src": "/manifest_screenshots/manga-page-dark.png",
+      "sizes": "1364x699",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Manga Chapter pages"
+    },
+
+    {
+      "src": "/manifest_screenshots/homepage-mobile-light.png",
+      "type": "image/png",
+      "sizes": "1440x3040",
+      "form_factor": "narrow",
+      "label": "Home page for mobile screen"
+    }
+  ]
+}
