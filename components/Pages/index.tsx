@@ -3,6 +3,7 @@ import { type FC, useState, forwardRef } from "react";
 import classname from "classnames";
 import { ModeContext } from "../../hooks/theme_provider";
 import NavLink from "../NavLink";
+import Swipper from "../Swipper";
 
 interface MangaPageType {
   data: string;
@@ -24,7 +25,10 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
-        <div data-index={index + 1} className="w-full h-full page_wrapper">
+        <div
+          data-index={index + 1}
+          className="w-full h-full min-h-0 page_wrapper"
+        >
           {retry ? (
             <div className="flex-shrink-0 flex flex-row flex-nowrap items-center justify-center">
               <button
@@ -42,10 +46,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               </button>
             </div>
           ) : (
-            <div
-              className="relative w-full h-full"
-              style={{ aspectRatio: "0.8" }}
-            >
+            <div className="relative" style={{ aspectRatio: "0.8" }}>
               <img
                 referrerPolicy="no-referrer"
                 loading="lazy"
@@ -83,21 +84,29 @@ const Pages = forwardRef<PageRef, PageProps>(function Pages(
           <section
             ref={ref}
             className={classname(
-              "manga-page-list relative w-full h-fit min-h-screen flex flex-col flex-nowrap items-center ",
+              "relative w-full h-min flex flex-col overflow-hidden",
               theme === "LIGHT" ? "bg-secondary_white" : "",
             )}
           >
+            {/* Navigation  */}
             <NavLink manga={manga} />
-            {chapters
-              ? data.map((filename: string, index: number) => (
-                  <MangaPage
-                    key={index}
-                    index={index}
-                    data={`${baseURL}/data/${hash}/${filename}`}
-                    dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
-                  />
-                ))
-              : null}
+
+            {/* Pages Swipper */}
+            <Swipper
+              direction="vertical"
+              className="flex flex-col items-center | snap-start snap-proximity overflow-y-scroll"
+            >
+              {chapters
+                ? data.map((filename: string, index: number) => (
+                    <MangaPage
+                      key={index}
+                      index={index}
+                      data={`${baseURL}/data/${hash}/${filename}`}
+                      dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
+                    />
+                  ))
+                : null}
+            </Swipper>
           </section>
         </>
       )}

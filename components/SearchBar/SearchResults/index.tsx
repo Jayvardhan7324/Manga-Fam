@@ -34,6 +34,7 @@ const ResultItem: FC<{ manga: Manga; theme: "LIGHT" | "DARK" }> = ({
       title={title ? title.en : ""}
       href={`/manga/${id}`}
       className={classname(
+        "rounded-md",
         theme === "LIGHT" ? "hover:bg-d9-white" : "hover:bg-secondary_black",
       )}
     >
@@ -72,7 +73,7 @@ const SearchResults: FC<SearchResultsProps> = ({
   return (
     <div
       className={classname(
-        "absolute top-full left-0 rounded-lg overflow-x-hidden overflow-y-auto z-50",
+        "absolute top-full left-0 flex flex-row rounded-lg overflow-x-hidden overflow-y-auto z-50 shadow-lg",
       )}
       style={{
         width: "min(100%, 800px)",
@@ -84,14 +85,14 @@ const SearchResults: FC<SearchResultsProps> = ({
       {loading ? (
         <div
           className={classname(
-            "flex flex-row flex-nowrap items-center justify-center p-2 h-20 flex-shrink-0 shadow-md shadow-gray-300",
+            "w-full flex flex-row flex-nowrap items-center justify-center p-2 h-20 flex-shrink-0",
             theme === "LIGHT" ? "fill-primary-color" : "fill-d9-white",
           )}
         >
           <Spinner />
         </div>
       ) : (
-        <ul className="flex flex-col flex-nowrap shadow-md shadow-gray-300">
+        <ul className="flex flex-col flex-nowrap p-2 lg:p-5">
           {results.map((result: any, index: number) => (
             <ResultItem key={index} manga={result} theme={theme} />
           ))}
