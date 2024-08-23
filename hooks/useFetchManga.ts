@@ -64,7 +64,7 @@ const useGetMangas = () => {
         changeError(false)
       })
       .catch(error => {
-        console.error(error)
+        // console.error(error)
         changeLoading(false)
         changeError(true)
       })
