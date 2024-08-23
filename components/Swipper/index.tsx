@@ -21,11 +21,11 @@ const Swipper = forwardRef<HTMLDivElement, SwipperProps>(function Swipper(
 ) {
   const [isMouseDown, changeMouseDown] = useState<boolean>(false);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>();
   const lastCoords = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useImperativeHandle(ref, () => {
-    return containerRef.current;
+    return containerRef.current as HTMLDivElement;
   });
 
   const handleMouseDown: MouseEventHandler = (ev) => {
