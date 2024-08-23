@@ -15,17 +15,17 @@ interface SwipperProps extends HTMLAttributes<HTMLDivElement> {
   direction: "horizontal" | "vertical" | "both";
 }
 
-const Swipper = forwardRef<HTMLDivElement, SwipperProps>(function Swipper(
+const Swipper = forwardRef<any, SwipperProps>(function Swipper(
   { children, direction = "horizontal", ...restProps },
   ref,
 ) {
   const [isMouseDown, changeMouseDown] = useState<boolean>(false);
 
-  const containerRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const lastCoords = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useImperativeHandle(ref, () => {
-    return containerRef.current as HTMLDivElement;
+    return containerRef.current;
   });
 
   const handleMouseDown: MouseEventHandler = (ev) => {
