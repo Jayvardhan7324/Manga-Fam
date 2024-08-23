@@ -69,6 +69,8 @@ type Options = {
   tags: string[];
 };
 
+const API_PATH = "https://api.mangadex.org/manga";
+
 /**
  * @desc Add the query to the request
  * @param url {URL} url of the request
@@ -127,7 +129,7 @@ class Manga {
    * @desc fetch the random Mangas
    */
   static async fetchMangas(offset: number, options: Options) {
-    let fetch_url = new URL("/api/manga", window.location.origin);
+    let fetch_url = new URL(API_PATH, window.location.origin);
 
     fetch_url.searchParams.append("offset", offset.toString());
     fetch_url.searchParams.append("limit", this.LIMIT.toString());
@@ -158,7 +160,7 @@ class Manga {
     offset?: number,
     limit?: number,
   ) {
-    let fetch_url = new URL("/api/manga", window.location.origin);
+    let fetch_url = new URL(API_PATH, window.location.origin);
 
     fetch_url.searchParams.append(
       "limit",
@@ -186,7 +188,7 @@ class Manga {
    * @returns
    */
   static async getMangaAndChapters(mangaID: string) {
-    const url = new URL(`/api/manga/${mangaID}`, window.location.origin);
+    const url = new URL(`${API_PATH}/${mangaID}`, window.location.origin);
     url.searchParams.append("includes[]", "cover_art");
     url.searchParams.append("includes[]", "author");
 
@@ -211,7 +213,7 @@ class Manga {
     const { attributes } = manga;
     const { tags } = attributes;
 
-    const fetch_url = new URL("/api/manga", window.location.origin);
+    const fetch_url = new URL(API_PATH, window.location.origin);
     fetch_url.searchParams.append("offset", "0");
     fetch_url.searchParams.append("limit", "10");
     fetch_url.searchParams.append("includes[]", "cover_art");
@@ -238,7 +240,7 @@ class Manga {
    * @returns {Manga[]}
    */
   static getMangasByIds = async (ids: string[]): Promise<Manga[]> => {
-    const fetch_url = new URL("/api/manga", window.location.origin);
+    const fetch_url = new URL(API_PATH, window.location.origin);
     fetch_url.searchParams.append("includes[]", "cover_art");
     fetch_url.searchParams.append("includes[]", "author");
 
