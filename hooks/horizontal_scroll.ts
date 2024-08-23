@@ -1,6 +1,6 @@
 import { useEffect, type RefObject } from 'react'
 
-const useHorizontalScroll = (element: RefObject<HTMLElement> | null) => {
+const useHorizontalScroll = (element: RefObject<HTMLElement | undefined> | null) => {
   useEffect(() => {
 
     // Mouse wheel event Handler
