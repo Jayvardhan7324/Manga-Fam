@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: ['uploads.mangadex.org']
   },
-  async rewrites() {
+  rewrites() {
     return [{
       source: '/api/:path*',
       destination: 'https://api.mangadex.org/:path*'
