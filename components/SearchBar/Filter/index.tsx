@@ -1,7 +1,6 @@
-import { type FC,  type ForwardedRef, useState, forwardRef, useRef } from 'react'
+import { type FC, useState, useRef } from 'react'
 import classname from 'classnames'
 import { useTransition, animated } from 'react-spring'
-import { useToggle } from '../../../hooks/useToggle'
 import { useClickAway } from '../../../hooks/useClickAway'
 import FilterPopup from './Popup'
 

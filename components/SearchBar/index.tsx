@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ModeContext } from '../../hooks/theme_provider'
 import Filter from './Filter'
 import Search from './Search'
@@ -7,25 +7,51 @@ import SearchResults from './SearchResults'
 import { useGetSearchResults } from '../../hooks/getSearchResults'
 
 const SearchBar = () => {
-
-  const searchContainerRef = useRef<HTMLDivElement | null>(null)
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
 
   const [searchText, changeSearchText] = useState<string>("")
+  const [inputIsFocused, changeFocus] = useState<boolean>(false)
   const [loading, results] = useGetSearchResults(searchText)
+
+  useEffect(() => {
+    const onInputFocused = () => {
+      console.log("focused")
+      changeFocus(true)
+    }
+
+    const onInputBlur = () => {
+      changeFocus(false)
+    }
+
+    if (searchInputRef.current) {
+      searchInputRef.current.addEventListener("focus", onInputFocused, false);
+      searchInputRef.current.addEventListener("blur", onInputBlur, false);
+    }
+
+    return () => {
+      if (searchInputRef.current) {
+        searchInputRef.current.removeEventListener("focus", onInputFocused, false);
+        searchInputRef.current.removeEventListener("blur", onInputBlur, false);
+      }
+    }
+
+  }, [searchInputRef.current])
 
   return (
     <ModeContext.Consumer>
-      {({theme}) => (
-        <section 
+      {({ theme }) => (
+        <section
           style={{ backgroundColor: "var(--primary-bg-color)" }}
           className="flex-shrink-0 flex flex-row flex-nowrap items-center p-1 w-full h-auto relative"
         >
-          <Filter { ...{ theme }} />
-          <Search { ...{ theme, changeSearchText }} ref={searchContainerRef} />
-          <ShownManga { ...{ theme }} />
+          <Filter {...{ theme }} />
+          <Search {...{ theme, changeSearchText }} ref={searchInputRef} />
+          <ShownManga {...{ theme }} />
 
-          { searchText !== "" ? (
-            <SearchResults {...{ loading, results, theme, changeSearchText }} />
+          {searchText !== "" && inputIsFocused ? (
+            <SearchResults 
+              {...{ loading, results, theme, changeSearchText }} 
+            />
           ) : null}
         </section>
       )}

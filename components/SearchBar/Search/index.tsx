@@ -7,7 +7,7 @@ interface SearchProps {
   changeSearchText: (text: string) => void;
 }
 
-export default forwardRef<HTMLDivElement, SearchProps>(function Search(
+export default forwardRef<HTMLInputElement, SearchProps>(function Search(
   { theme, changeSearchText },
   ref,
 ) {
@@ -28,9 +28,8 @@ export default forwardRef<HTMLDivElement, SearchProps>(function Search(
 
   return (
     <div
-      ref={ref}
       className={classname(
-        "flex flex-row flex-nowrap items-center p-2 rounded-lg w-full mx-2",
+        "flex flex-row flex-nowrap items-center p-4 rounded-lg w-full mx-2",
         theme === "LIGHT" ? "bg-secondary_white" : "bg-secondary_black",
       )}
       style={{ maxWidth: "600px" }}
@@ -53,6 +52,7 @@ export default forwardRef<HTMLDivElement, SearchProps>(function Search(
 
       <input
         type="text"
+        ref={ref}
         placeholder="Search for manga ...."
         value={value}
         onInput={handleInput}
