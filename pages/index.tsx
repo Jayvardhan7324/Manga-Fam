@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ModeContext } from "../hooks/theme_provider";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -12,8 +11,6 @@ import { Provider } from "react-redux";
 const Home = () => {
   return (
     <>
-      {/* Vercel Speed Insights */}
-      <SpeedInsights/>
       <Head>
         <title>Manga Fam</title>
         <meta
