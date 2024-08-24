@@ -33,7 +33,7 @@ const FAB: FC<FABProps> = ({ manga, chapters, total, active, changeActive }) => 
   const toggleMenu = () => { toggle(!open) }
 
   // toggle the popup
-  useClickAway(containerRef, open, toggleMenu, [popupRef])
+  useClickAway(containerRef, toggleMenu, [popupRef])
 
   return (
     <ModeContext.Consumer>
