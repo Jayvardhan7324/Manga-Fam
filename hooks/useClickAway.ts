@@ -17,25 +17,25 @@ const eventHasOther = (event: any, other: Ref[] = []): boolean => {
   return result
 }
 
-const useClickAway = (container: Ref, open: boolean, toggle: () => void, otherRef: Ref[] = []) => {
+const useClickAway = (container: Ref, toggle: () => void, otherRef: Ref[] = []) => {
   useEffect(() => {
 
     const clickHandler = (event: any) => {
       if (container.current) {
-        if (!event.composedPath().includes(container.current) && !eventHasOther(event, otherRef)) {
+        if (!event.composedPath().includes(container.current) || !eventHasOther(event, otherRef)) 
           toggle()
-        }
+
       }
     }
 
-    if (container && container.current && open) {
+    if (container.current) {
       window.addEventListener("click", clickHandler, false)
     }
 
     return () => {
       window.removeEventListener("click", clickHandler, false)
     }
-  }, [container, otherRef])
+  }, [container.current, otherRef.length])
 }
 
 export { useClickAway }

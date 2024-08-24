@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html,
 body {
   padding: 0;
@@ -22,12 +23,13 @@ body {
     sans-serif;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0px;
   height: 0px;
+  background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   width: 0px;
   height: 0px;
 }
@@ -102,7 +104,10 @@ button {
 * {
   box-sizing: border-box;
   font-family: monospace;
+  
   scrollbar-width: thin;
+  scrollbar-color: var(--secondary-bg-color) transparent;
+  
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -120,6 +125,10 @@ button {
   background-color: var(--secondary-bg-color);
 }
 
+*::-webkit-scrollbar:hover {
+  scrollbar-color: var(--primary-text-color) transparent;
+}
+
 *::-webkit-scrollbar-thumb {
   width: 6px;
   height: 6px;
@@ -129,6 +138,7 @@ button {
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-text-color);
+  scrollbar-color: var(--primary-text-color) transparent;
 }
 
 .light .active_nav {

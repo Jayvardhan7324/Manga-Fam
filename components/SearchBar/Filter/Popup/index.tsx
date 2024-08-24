@@ -73,6 +73,7 @@ const FilterGroup: FC<FilterGroupProps> = ({
 };
 
 const FilterPopup = () => {
+
   const dispatch = useDispatch();
   const options = useSelector(getOptions);
 
@@ -112,7 +113,7 @@ const FilterPopup = () => {
   };
 
   return (
-    <section className="rounded-lg relative overflow-y-scroll h-full bg-[var(--primary-bg-color)]">
+    <section className="rounded-lg relative overflow-y-scroll h-full w-[500px] bg-[var(--primary-bg-color)]">
       <div className="sticky top-0 left-0 z-10 border-b border-solid border-gray-50 flex flex-row flex-nowrap items-center px-1 py-2 justify-end bg-[var(--primary-bg-color)]">
         <button
           role="button"
@@ -120,7 +121,7 @@ const FilterPopup = () => {
           className="rounded-md text-base p-2 px-4 border border-solid border-transparent hover:border-primary-color filter_apply_button"
           onClick={refreshPage}
         >
-          Done
+         Apply 
         </button>
       </div>
 

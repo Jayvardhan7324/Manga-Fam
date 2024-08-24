@@ -12,7 +12,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 
   const req_body = await manga_req.json();
-  console.log(req_body);
-
   res.status(200).json(req_body);
 }

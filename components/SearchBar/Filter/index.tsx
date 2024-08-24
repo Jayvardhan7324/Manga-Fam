@@ -1,8 +1,8 @@
-import { type FC, type ForwardedRef, forwardRef, useRef } from 'react'
-import { useToggle } from '../../../hooks/useToggle'
-import { useClickAway } from '../../../hooks/useClickAway'
+import { type FC,  type ForwardedRef, useState, forwardRef, useRef } from 'react'
 import classname from 'classnames'
 import { useTransition, animated } from 'react-spring'
+import { useToggle } from '../../../hooks/useToggle'
+import { useClickAway } from '../../../hooks/useClickAway'
 import FilterPopup from './Popup'
 
 type PopupTypes = {
@@ -13,12 +13,10 @@ type PopupTypes = {
 const Popup: FC<PopupTypes> = ({ theme, open }) => {
 
   const top_transitions = useTransition(open, {
-    from: { height: 0 },
-    enter: { height: 500 }, 
-    leave: { height: 0 },
-    delay: 200,
-    reverse: true,
-    config: { duration: 200 }
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 150 }
   })
 
   const bottom_transitions = useTransition(open, {
@@ -29,14 +27,15 @@ const Popup: FC<PopupTypes> = ({ theme, open }) => {
     reverse: true,
     config: { duration: 200 },
   })
+
   
   return (
     <>
       {
-        top_transitions(({ height }, open) => 
+        top_transitions((style, open) => 
           open && 
           <animated.div
-            style={{ height: height.to(y => `${y}px`) }}
+            style={style}
             className={
               classname(
                 "rounded-md hidden md:block filter_popup", 
@@ -67,10 +66,10 @@ const Popup: FC<PopupTypes> = ({ theme, open }) => {
 
 const Filter: FC<{ theme: "LIGHT" | "DARK" }> = ({ theme }) => {
   const container = useRef<HTMLDivElement>(null)
-  const [open, toggle] = useToggle(false)
+  const [open, toggle] = useState(false)
 
   // add click away hook
-  useClickAway(container, open, toggle)
+  useClickAway(container, () => toggle(false))
 
   return (
     <div className='relative' ref={container}>
@@ -87,7 +86,7 @@ const Filter: FC<{ theme: "LIGHT" | "DARK" }> = ({ theme }) => {
               "hover:fill-d9-white": theme !== "LIGHT",
             }
           )}
-        onClick={toggle}
+        onClick={() => toggle(true)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" className={classname(" w-4 h-4 fill-custom-gray fill-inherit")}>
           <path d="M1,4.75H3.736a3.728,3.728,0,0,0,7.195,0H23a1,1,0,0,0,0-2H10.931a3.728,3.728,0,0,0-7.195,0H1a1,1,0,0,0,0,2ZM7.333,2a1.75,1.75,0,1,1-1.75,1.75A1.752,1.752,0,0,1,7.333,2Z"/>
