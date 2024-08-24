@@ -69,7 +69,8 @@ type Options = {
   tags: string[];
 };
 
-const API_PATH = "https://api.mangadex.org/manga";
+// const API_PATH = "https://api.mangadex.org/manga";
+const API_PATH = "/api/manga";
 
 /**
  * @desc Add the query to the request
@@ -194,7 +195,7 @@ class Manga {
 
     const responses = await Promise.all([
       Fetch(url).then((res) => res.json()),
-      Fetch(`/api/manga/${mangaID}/aggregate`).then((res) => res.json()),
+      Fetch(`${API_PATH}/${mangaID}/aggregate`).then((res) => res.json()),
     ]).catch(console.error);
 
     if (!responses) throw new Error("Cannot fetch manga and chapter");
