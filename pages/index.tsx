@@ -13,11 +13,17 @@ const Home = () => {
     <>
       <Head>
         <title>Manga Fam</title>
+
+        {/* page description */}
         <meta
           name="description"
-          content="From One piece to Dragon ball Z, read thousands of mangas."
+          content="From One piece to Dragon ball Z, read thousands of mangas for free."
         />
+
+        {/* keywords */}
         <meta name="keywords" content="Manga Fam" />
+
+        {/* open graphics */}
         <meta property="og:title" content="Manga Fam" />
         <meta
           property="og:description"

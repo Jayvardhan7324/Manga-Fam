@@ -121,13 +121,15 @@ const PageContainer = () => {
             </div>
           )}
           <Sidebar {...{ loading, manga, chapters }} />
-          <FAB
-            manga={manga}
-            chapters={chapters}
-            total={data.length}
-            active={active}
-            changeActive={changeActivePage}
-          />
+          {/*
+            <FAB
+              manga={manga}
+              chapters={chapters}
+              total={data.length}
+              active={active}
+              changeActive={changeActivePage}
+            />*/
+          }
         </div>
       )}
     </ModeContext.Consumer>

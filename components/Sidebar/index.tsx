@@ -33,18 +33,18 @@ const Vertical = () => {
 
   return <ModeContext.Consumer>
     {({ theme }) => (
-      <ul className="flex flex-col flex-nowrap p-2 w-min">
+      <ul className="flex flex-col flex-nowrap p-1 mt-1 gap-2 | w-min">
         {ITEM.map((item) => (
           <Link key={item.name} href={item.href} >
             <li className={
                 classname(
-                  "rounded-lg p-2 px-3 my-2 mx-1 block transition-colors",
+                  "rounded-lg p-2 mx-1 block transition-colors",
                   active === item.name.toLowerCase() ? "active_nav" : "",
                   theme === "LIGHT" ? "hover:bg-secondary_white" : "hover:bg-secondary_black"
                 )}>
-              <div className='flex flex-row flex-nowrap items-center'>
-                <span className="w-5 h-5">{item.icon}</span>
-                <span className="primary text-base font-semi-bold m-2 ml-4">{item.name}</span>
+              <div className='flex flex-row flex-nowrap items-center gap-2'>
+                <span className="w-4 h-4">{item.icon}</span>
+                <span className="primary font-semi-bold">{item.name}</span>
               </div>
             </li>
           </Link>

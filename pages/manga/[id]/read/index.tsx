@@ -13,7 +13,7 @@ const Page: NextPage = () => {
       <ModeContext.Consumer>
         {({ theme, toggleTheme }) => (
           <>
-            <Header {...{toggleTheme, mode: theme }} />
+            <Header toggleTheme={toggleTheme} mode={theme} />
             <Main>
               <Navigation/>
               <PageContainer/>

@@ -27,7 +27,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
       {({ theme }) => (
         <div
           data-index={index + 1}
-          className="w-full h-full min-h-0 page_wrapper"
+          className="w-full max-h-full min-h-0 page_wrapper"
         >
           {retry ? (
             <div className="flex-shrink-0 flex flex-row flex-nowrap items-center justify-center">
@@ -92,21 +92,18 @@ const Pages = forwardRef<PageRef, PageProps>(function Pages(
             <NavLink manga={manga} />
 
             {/* Pages Swipper */}
-            <Swipper
-              direction="vertical"
-              className="flex flex-col items-center | snap-start snap-proximity overflow-y-scroll"
-            >
+            <div className="overflow-y-scroll">
               {chapters
                 ? data.map((filename: string, index: number) => (
-                    <MangaPage
-                      key={index}
-                      index={index}
-                      data={`${baseURL}/data/${hash}/${filename}`}
-                      dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
-                    />
-                  ))
+                  <MangaPage
+                    key={index}
+                    index={index}
+                    data={`${baseURL}/data/${hash}/${filename}`}
+                    dataSaver={`${baseURL}/data-saver/${hash}/${dataSaver[index]}`}
+                  />
+                ))
                 : null}
-            </Swipper>
+            </div>
           </section>
         </>
       )}

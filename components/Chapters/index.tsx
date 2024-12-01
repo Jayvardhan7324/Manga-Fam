@@ -1,15 +1,8 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/router";
 import classnames from "classnames";
 import { ModeContext } from "../../hooks/theme_provider";
 import * as Skeleton from "../Skeleton";
-
-type ChaptersProps = {
-  chapters: any;
-  loading: boolean;
-  recentData: any;
-  clearBg?: boolean;
-};
 
 const isChapterAlreadyRead = (readChapters: string[], id: string) => {
   let found = false;
@@ -21,7 +14,13 @@ const isChapterAlreadyRead = (readChapters: string[], id: string) => {
   return found;
 };
 
-const Chapter: FC<{ ch: any; recentData: any; vol: string }> = ({
+interface IChapterProps {
+  ch: any
+  recentData: any
+  vol: string
+}
+
+const Chapter: FC<IChapterProps> = ({
   ch,
   recentData,
   vol,
@@ -33,14 +32,16 @@ const Chapter: FC<{ ch: any; recentData: any; vol: string }> = ({
   const mangaID = router.query.id;
   const active_volume = router.query.vol;
   const active_chapter = router.query.chapter;
-  const isActive = active_volume === vol && active_chapter === chapter;
+  const isActive = useMemo(() => 
+      active_volume === vol && active_chapter === chapter, 
+    [active_volume, active_chapter, vol, chapter]);
 
   const isRead = recentData
     ? isChapterAlreadyRead(recentData.readChapters, id)
     : false;
 
   // push the url in the router on click
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     router.push({
       pathname: `/manga/${mangaID}/read`,
       query: {
@@ -50,7 +51,7 @@ const Chapter: FC<{ ch: any; recentData: any; vol: string }> = ({
     });
 
     // router.reload() // Reload Page
-  };
+  }, [chapter, vol, router, mangaID]);
 
   return (
     <ModeContext.Consumer>
@@ -84,7 +85,13 @@ const Chapter: FC<{ ch: any; recentData: any; vol: string }> = ({
   );
 };
 
-const Volume: FC<{ recentData: any; vol: any; clearBg?: boolean }> = ({
+interface IVolumeProps {
+  recentData: any
+  vol: any
+  clearBg?: boolean
+}
+
+const Volume: FC<IVolumeProps> = ({
   recentData,
   vol,
   clearBg = false,
@@ -118,6 +125,13 @@ const Volume: FC<{ recentData: any; vol: any; clearBg?: boolean }> = ({
       )}
     </ModeContext.Consumer>
   );
+};
+
+interface ChaptersProps  {
+  chapters: any;
+  loading: boolean;
+  recentData: any;
+  clearBg?: boolean;
 };
 
 const Chapters: FC<ChaptersProps> = ({
