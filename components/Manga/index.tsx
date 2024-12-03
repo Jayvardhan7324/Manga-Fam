@@ -28,7 +28,7 @@ const MangaCover: FC<{ manga: Manga; loading: boolean }> = ({
       {loading ? (
         <div className="skeleton rounded-lg"></div>
       ) : (
-        <div className="rounded-md overflow-hidden m-1 max-w-[150px] md:max-w-[300px] aspect-[0.8]">
+        <div className="rounded-md overflow-hidden m-1 max-w-[150px] md:max-w-[300px] aspect-[0.8] shadow-md">
           <Cover low={low_cover} high={high_cover} />
         </div>
       )}
@@ -95,6 +95,8 @@ const MangaSection: FC<MangaProps> = ({ loading, manga }) => {
   } = attributes;
 
   const author = relationships.find((item) => item.type === "author");
+  const cover_art = relationships.find((item) => item.type === "cover_art")
+
   const author_name = author?.attributes.name || "";
 
   const updatedDate = new Date(updatedAt);
@@ -118,7 +120,14 @@ const MangaSection: FC<MangaProps> = ({ loading, manga }) => {
         {({ theme }) => (
           <div className="flex-shrink-1 flex flex-col flex-nowrap">
             <NavLink {...{ manga }} />
-            <section className="flex-grow-1 w-full">
+            <section
+              style={{
+                background: cover_art ?
+                  `${theme === "DARK" ? "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))" : "linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4))"}, url(https://uploads.mangadex.org/covers/${id}/${cover_art.attributes.fileName}.512.jpg) ` 
+                  : ""
+              }}
+              className="flex-grow-1 w-full rounded-md"
+            >
               <div className="flex flex-col flex-nowrap md:flex-row lg:flex-row">
                 <MangaCover {...{ loading, manga }} />
 

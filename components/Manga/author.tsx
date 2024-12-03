@@ -30,7 +30,7 @@ const Author: FC<AuthorType> = ({ loading, author_name, status, publicationDemog
             style={{ minWidth: "300px" }}
           >
             <span
-              className="text-lg text-custom-gray mr-2"
+              className={ classname("text-lg mr-2", theme === "DARK" ? "text-secondary_white" : "text-4B-black") }
             >
               {author_name}
             </span>

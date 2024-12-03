@@ -103,11 +103,11 @@ const Volume: FC<IVolumeProps> = ({
         <>
           <dt
             className={classnames(
-              "sticky top-0 left-0 text-lg py-1 w-full text-custom-gray my-1",
-              !clearBg
+              "sticky top-0 left-0 text-lg px-2 py-1 rounded-md w-full my-1",
+              true
                 ? theme === "LIGHT"
-                  ? "md:bg-secondary_white"
-                  : "md:bg-secondary_black"
+                  ? "md:bg-secondary_white text-secondary_black"
+                  : "md:bg-secondary_black text-secondary_white"
                 : "md:bg-[var(--primary-bg-color)]",
             )}
           >
@@ -146,11 +146,11 @@ const Chapters: FC<ChaptersProps> = ({
         <div
           className={classnames(
             "chapters_wrapper flex flex-col rounded-md px-1 lg:mr-5",
-            !clearBg
-              ? theme === "LIGHT"
-                ? "md:bg-secondary_white"
-                : "md:bg-secondary_black"
-              : "",
+            // !clearBg
+            //   ? theme === "LIGHT"
+            //     ? "md:bg-secondary_white"
+            //     : "md:bg-secondary_black"
+            //   : "",
           )}
         >
           <h2

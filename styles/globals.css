@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
   padding: 0;
@@ -50,7 +49,8 @@ body {
 }
 
 .dark {
-  --primary-bg-color: #1a1a1a;
+  /* --primary-bg-color: #1a1a1a; */
+  --primary-bg-color: #000000;
   --secondary-bg-color: #282c2d;
   --tertiary-bg-color: #4b4b4b;
   --primary-text-color: #d9d9d9;
@@ -104,10 +104,10 @@ button {
 * {
   box-sizing: border-box;
   font-family: monospace;
-  
+
   scrollbar-width: thin;
   scrollbar-color: var(--secondary-bg-color) transparent;
-  
+
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -252,7 +252,7 @@ button {
 }
 
 .filter_apply_button:hover {
-  background-color: #4b4b4b;
+  background-color: var(--skeleton-bg-color);
 }
 
 .active_filter_option {
@@ -342,6 +342,15 @@ button {
 .favourite_item {
   width: 200px;
   height: 280px;
+}
+
+.animated__banner {
+  will-change: background-position;
+
+  background-size: 100% 150%;
+  background-position: var(--banner-bg-position);
+
+  transition: background-position 0.2s linear;
 }
 
 @media screen and (max-width: 750px) {

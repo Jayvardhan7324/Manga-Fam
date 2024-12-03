@@ -13,10 +13,13 @@ module.exports = {
         "4B-black": "#4B4B4B",
         // "custom-gray": "#697E84",
         "custom-gray": "#a5b1c2",
-        "secondary_white": "#ece7e7",
-        "primary_black": "#1A1A1A",
-        "secondary_black": "#282C2D",
-      }
+        secondary_white: "#ece7e7",
+        primary_black: "#1A1A1A",
+        // secondary_black: "#282C2D",
+        secondary_black: "#121212",
+
+        mid_black: "#2f3640",
+      },
     },
   },
   plugins: [],

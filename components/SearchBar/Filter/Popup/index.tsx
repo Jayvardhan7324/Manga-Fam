@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type FC, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classname from "classnames";
 import { ModeContext } from "../../../../hooks/theme_provider";
@@ -31,31 +31,33 @@ const FilterGroup: FC<FilterGroupProps> = ({
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
-        <div className="w-full p-2 my-2">
+        <div className="flex flex-col gap-1 w-full p-2">
           <span
             className={classname(
-              "sticky top-5 left-0 w-min p-1 px-2 z-50 rounded-lg font-bold text-md",
+              "w-full p-1 px-2 rounded-lg font-sans text-sm",
               theme === "LIGHT" ? "text-primary-color" : "text-white",
               // theme === "LIGHT" ? "bg-d9-white" : "bg-4B-black",
             )}
           >
             {label}
           </span>
-          <div className="flex flex-row flex-wrap my-2">
+          <div className="flex flex-row flex-wrap gap-2">
             {Object.keys(options).map((option: string) => (
               <button
                 role="button"
                 type="button"
                 key={option}
                 className={classname(
-                  "py-1 px-2 m-1 flex flex-row flex-nowrap justify-start rounded-full text-xs md:text-sm text-custom-gray",
+                  "py-1 px-1.5 flex flex-row flex-nowrap justify-start rounded-full font-sans text-xs md:text-xs",
                   theme === "LIGHT"
-                    ? "border border-custom-gray border-solid hover:border-primary-color "
-                    : "border border-solid border-custom-gray hover:border-secondary_white ",
+                    ? "text-4B-black hover:border-primary-color "
+                    : "text-custom-gray hover:border-secondary_white ",
+
+                  /* if selected */
                   options[option]
                     ? theme === "LIGHT"
-                      ? "text-secondary_white border-primary-color bg-primary-color"
-                      : "text-primary_black border-secondary_white bg-secondary_white"
+                      ? "text-secondary_white bg-primary-color"
+                      : "text-primary_black bg-secondary_white"
                     : theme === "LIGHT"
                     ? "hover:text-primary-color"
                     : "hover:text-secondary_white",
@@ -73,6 +75,8 @@ const FilterGroup: FC<FilterGroupProps> = ({
 };
 
 const FilterPopup = () => {
+
+  const { mode } = useContext(ModeContext) 
 
   const dispatch = useDispatch();
   const options = useSelector(getOptions);
@@ -113,12 +117,18 @@ const FilterPopup = () => {
   };
 
   return (
-    <section className="rounded-lg relative overflow-y-scroll h-full md:w-[500px] bg-[var(--primary-bg-color)]">
-      <div className="sticky top-0 left-0 z-10 border-b border-solid border-gray-50 flex flex-row flex-nowrap items-center px-1 py-2 justify-end bg-[var(--primary-bg-color)]">
+    <section
+      data-dark={mode === "DARK"}
+      className="rounded-lg relative overflow-y-scroll h-full md:max-h-[400px] bg-[var(--primary-color)] data-[dark=true]:bg-secondary_black shadow-lg"
+    >
+      <div
+        data-dark={mode === "DARK"}
+        className="sticky top-0 left-0 z-20 flex flex-row flex-nowrap items-center px-1 py-2 justify-end bg-[var(--primary-color)] data-[dark=true]:bg-secondary_black"
+      >
         <button
           role="button"
           type="button"
-          className="rounded-md text-base p-2 px-4 border border-solid border-transparent hover:border-primary-color filter_apply_button"
+          className="rounded-md text-sm text-d9-white p-2 px-3 filter_apply_button"
           onClick={refreshPage}
         >
          Apply 

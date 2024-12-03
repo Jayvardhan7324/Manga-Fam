@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react'
-import Manga from '../components/utils/Manga'
-import * as type from '../components/utils/Manga'
-
-
+import { useState, useEffect, useMemo, useCallback } from "react"
+import Manga from "../components/utils/Manga"
+import * as type from "../components/utils/Manga"
 
 /**
  * @desc Fetch the mangas from the JIKAN API
  * @returns {Promise<Record<string, any>>}
  */
 const fetchPopularManga = async (): Promise<Record<string, any>> => {
-  const response = await fetch('/api/popular')
-  
-  if (response && response.status !== 200) throw new Error("Response is not valid")
+  const response = await fetch("/api/popular")
+
+  if (response && response.status !== 200)
+    throw new Error("Response is not valid")
 
   const json = await response.json()
 
@@ -40,21 +39,21 @@ const getPopularMangaTitles = (result: Record<string, any>): string[] => {
     if (count > 4) break
 
     // increase the count
-    ++ count
+    ++count
   }
 
   return titleList
 }
 
 /**
- * 
+ *
  * @param titles {string[]} list of manga titles
  * @returns {Promise<Manga[]>}
  */
 const fetchMangas = async (titles: string[]): Promise<Manga[]> => {
-
-  const responses = await 
-    Promise.all(titles.map((title: string) => Manga.searchMangas(title, 0, 1)))
+  const responses = await Promise.all(
+    titles.map((title: string) => Manga.searchMangas(title, 0, 1)),
+  )
 
   if (responses.length === 0) throw new Error("Cannot fetch mangas")
 
@@ -69,53 +68,50 @@ const fetchMangas = async (titles: string[]): Promise<Manga[]> => {
   return mangas
 }
 
-
 /**
  * @desc React hook to get Popular mangas
  * @returns {[boolean, boolean, Manga[]]}
  */
 const usePopularManga = (): [boolean, boolean, Manga[]] => {
   const [loading, changeLoadingStatus] = useState<boolean>(false)
-  const[error, changeErrorStatus] = useState<boolean>(false)
+  const [error, changeErrorStatus] = useState<boolean>(false)
   const [_mangas, changeMangas] = useState<Manga[]>([])
 
-  const getMangas = async () => {
+  const getMangas = useCallback(async () => {
     const titles = await fetchPopularManga()
-      .then(res => getPopularMangaTitles(res))
-      .catch(err => console.error(err))
+      .then((res) => getPopularMangaTitles(res))
+      .catch((err) => console.error(err))
 
     if (!titles) throw new Error("Cannot get title")
 
-    const result = await fetchMangas(titles)
-      .catch(err => console.error(err))
+    const result = await fetchMangas(titles).catch((err) => console.error(err))
 
     if (!result) throw new Error("Cannot get all mangas")
 
     return result
-  }
+  }, [])
 
   useEffect(() => {
-
     // change the loading status
     changeLoadingStatus(true)
     changeErrorStatus(false)
 
     getMangas()
-      .then(res => {
+      .then((res) => {
         // reset the loading status
         changeLoadingStatus(false)
 
         // change the mangas
         changeMangas(res)
       })
-      .catch(err => {
+      .catch((err) => {
         changeErrorStatus(true)
         changeLoadingStatus(false)
       })
-
-  }, [])
+  }, [getMangas])
 
   return [loading, error, _mangas]
 }
 
 export { usePopularManga }
+

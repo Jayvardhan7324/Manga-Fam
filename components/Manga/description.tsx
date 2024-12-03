@@ -28,7 +28,7 @@ const Description: FC<DescriptionType> = ({ loading, description }) => {
               role="Description wrapper"
               className={classname(
                 "flex flex-col flex-nowrap my-3 mx-1 p-2 rounded-lg max-w-4xl",
-                theme === "LIGHT" ? "bg-secondary_white" : "bg-4B-black",
+                theme === "LIGHT" ? "bg-secondary_white" : "bg-secondary_black",
               )}
             >
               <h3
@@ -39,8 +39,8 @@ const Description: FC<DescriptionType> = ({ loading, description }) => {
               >Description</h3>
               <span 
                 className={classname(
-                  "my-2 break-words",
-                  theme === "LIGHT" ? "text-custom-gray" : "text-d9-white"
+                  "my-2 break-words font-sans text-xs md:text-sm",
+                  theme === "LIGHT" ? "text-4B-black" : "text-d9-white"
                 )}
               >
                 {getDescription(description)}

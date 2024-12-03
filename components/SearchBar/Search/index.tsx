@@ -29,7 +29,7 @@ export default forwardRef<HTMLInputElement, SearchProps>(function Search(
   return (
     <div
       className={classname(
-        "flex flex-row flex-nowrap items-center p-4 rounded-lg w-full mx-2",
+        "flex flex-row flex-nowrap items-center px-4 py-2 rounded-lg w-full mx-2",
         theme === "LIGHT" ? "bg-secondary_white" : "bg-secondary_black",
       )}
       style={{ maxWidth: "600px" }}
@@ -57,7 +57,7 @@ export default forwardRef<HTMLInputElement, SearchProps>(function Search(
         value={value}
         onInput={handleInput}
         className={classname(
-          "text-custom-gray bg-transparent mx-2 w-full appearance-none outline-none",
+          "text-custom-gray bg-transparent mx-2 w-full appearance-none outline-none focus:text-primary_black",
           theme === "LIGHT" ? "" : "text-secondary_white",
         )}
       />
@@ -71,7 +71,8 @@ export default forwardRef<HTMLInputElement, SearchProps>(function Search(
           changeSearchText("");
         }}
       >
-        <Cross />
+        {/* Show Cross button only when the input is not empty */}
+        { value !== "" && (<Cross className="w-3 h-3" />)}
       </button>
     </div>
   );

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { FC } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 type CoverType = {
@@ -15,6 +15,11 @@ const Cover: FC<CoverType> = ({ low, high, fill = "cover" }) => {
   const handleError = () => {
     high && changeSrc(high)
   }
+
+  useEffect(() => {
+    changeSrc(low)
+  }, [low, high, changeSrc])
+
   return (
     <div className="relative w-full h-full">
       {src ? 

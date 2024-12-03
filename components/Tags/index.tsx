@@ -39,7 +39,7 @@ const Tags = ({ theme }: { theme: "LIGHT" | "DARK" }) => {
           <button
             type="button"
             role="button"
-            className="text-inherit text-xs md:text-sm"
+            className="text-inherit text-xs font-sans md:text-sm"
             onClick={() => {
               change_tag(tag);
             }}

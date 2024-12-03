@@ -30,7 +30,7 @@ const Tags: FC<TagsProps> = ({ loading, tags }) => {
                   className={classname(
                     "rounded-md py-1 px-2 m-1 text-sm whitespace-nowrap",
                     theme === "LIGHT" ? "text-primary-color" : "text-d9-white",
-                    theme === "LIGHT" ? "bg-d9-white" : "bg-custom-gray",
+                    theme === "LIGHT" ? "bg-d9-white" : "bg-4B-black",
                   )}
                 >
                   {tag}

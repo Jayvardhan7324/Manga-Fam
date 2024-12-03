@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Slider from '../Slider'
+import Banner from '../Banner'
 import MangaCover from "../MangaCover";
 import * as Skeleton from '../Skeleton'
 import Tags from '../Tags'
@@ -19,8 +20,8 @@ const Container = () => {
     <ModeContext.Consumer>
       {({ theme }) => (
         <div className="overflow-y-auto" style={{ backgroundColor: "var(--primary-bg-color)"}}>
-          <Slider/>
-          <span></span>
+          {/* <Slider/> */}
+          <Banner/>
 
           <Tags { ...{ theme }} />
           <main className="flex flex-row flex-wrap py-2 mx-auto sm:mx-0">
@@ -37,7 +38,7 @@ const Container = () => {
     
                 return <MangaCover key={id} manga={manga}/>
               })
-            ) : null}
+            ) : null }
     
             {fetchingMore && (
               array.map((_, index) => (
