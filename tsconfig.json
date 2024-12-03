@@ -17,5 +17,5 @@
   },
 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "service_worker/**/*.ts"]
+  "exclude": ["node_modules"]
 }

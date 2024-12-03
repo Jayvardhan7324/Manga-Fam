@@ -1,3 +1,4 @@
+import { useMemo, memo } from 'react'
 import classname from 'classnames'
 import type { FC } from 'react'
 import Link from 'next/link'
@@ -5,7 +6,7 @@ import { ModeContext } from '../../hooks/theme_provider'
 import Cover from '../Cover'
 import type { Manga } from '../utils/Manga'
 
-type MangaCoverProps = {
+interface MangaCoverProps {
   manga: Manga
 }
 
@@ -23,23 +24,36 @@ const MangaCover: FC<MangaCoverProps> = ({ manga }) => {
   const { id, attributes, relationships } = manga
   const { title, altTitles } = attributes
 
-  const author = relationships.find(item => item.type === "author")
-  const cover_art = relationships.find(item => item.type === "cover_art")
+  const _title = title.en ?? get_altTitle(altTitles)
 
-  const name = author?.attributes.name || ""
-  const filename = cover_art ? cover_art?.attributes.fileName : null
+  const { name } = useMemo(() => {
+    const author = relationships.find(item => item.type === "author")
+    const name = author?.attributes.name || ""
 
-  const low_cover = filename ? `${MANGADEX_UPLOADS_URL}${id}/${filename}.256.jpg` : ""
-  const high_cover = filename ? `${MANGADEX_UPLOADS_URL}${id}/${filename}.512.jpg` : ""
+    return { name }
+  }, [relationships])
 
-  const _title = title.en ? title.en : get_altTitle(altTitles)
+
+  const { low_cover, high_cover } = useMemo(() => {
+    const cover_art = relationships.find(item => item.type === "cover_art")
+
+    if (!cover_art) return { low_cover: "", high_cover: "" }
+
+    const filename = cover_art.attributes.fileName
+
+    const low_cover = filename ? `${MANGADEX_UPLOADS_URL}${id}/${filename}.256.jpg` : ""
+    const high_cover = filename ? `${MANGADEX_UPLOADS_URL}${id}/${filename}.512.jpg` : ""
+
+    return { low_cover, high_cover }
+  }, [relationships, id])
+
 
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
         <div 
           className={classname(
-            "flex flex-col flex-nowrap manga-element p-2 rounded-lg",
+            "flex-grow flex flex-col flex-nowrap manga-element p-2 rounded-lg",
             theme === "LIGHT" ? "hover:bg-d9-white" : "hover:bg-secondary_black"
           )} 
           title={_title}
@@ -78,4 +92,4 @@ const MangaCover: FC<MangaCoverProps> = ({ manga }) => {
   )
 }
 
-export default MangaCover
+export default memo( MangaCover )

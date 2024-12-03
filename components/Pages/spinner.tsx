@@ -2,15 +2,22 @@ const Spinner = () => {
   return (
     <div className="w-6 h-6 stroke-inherit fill-inherit lg:w-10 lg:h-10 spin">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        id="Outline"
-        viewBox="0 0 24 24"
         className="w-full h-full"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="inherit"
       >
-        <path d="M12,24A12,12,0,1,1,22.714,6.59a1,1,0,1,1-1.785.9,10,10,0,1,0-.011,9.038,1,1,0,0,1,1.781.908A11.955,11.955,0,0,1,12,24Z" />
+        <g fill="inherit" fillRule="evenodd" clipRule="evenodd">
+          <path
+            d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"
+            opacity=".2"
+          />
+
+          <path d="M7.25.75A.75.75 0 018 0a8 8 0 018 8 .75.75 0 01-1.5 0A6.5 6.5 0 008 1.5a.75.75 0 01-.75-.75z" />
+        </g>
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default Spinner;
+export default Spinner

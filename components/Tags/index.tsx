@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import classname from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { updatedTags, refreshManga } from "../../redux/action/action";
@@ -8,7 +8,7 @@ const Tags = ({ theme }: { theme: "LIGHT" | "DARK" }) => {
   const dispatch = useDispatch();
   const tag_array = useSelector((state: any) => state.main.genre);
 
-  const change_tag = (tag: string) => {
+  const change_tag = useCallback((tag: string) => {
     const new_tag_array = { ...tag_array };
     new_tag_array[`${tag}`] = !tag_array[`${tag}`];
 
@@ -17,7 +17,7 @@ const Tags = ({ theme }: { theme: "LIGHT" | "DARK" }) => {
 
     // refresh the mangas
     dispatch(refreshManga());
-  };
+  }, [tag_array, dispatch, updatedTags]);
 
   return (
     <Swipper

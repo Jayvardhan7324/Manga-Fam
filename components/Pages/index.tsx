@@ -3,7 +3,6 @@ import { type FC, useState, forwardRef } from "react";
 import classname from "classnames";
 import { ModeContext } from "../../hooks/theme_provider";
 import NavLink from "../NavLink";
-import Swipper from "../Swipper";
 
 interface MangaPageType {
   data: string;
@@ -46,7 +45,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               </button>
             </div>
           ) : (
-            <div className="relative" style={{ aspectRatio: "0.8" }}>
+            <div className="relative w-full" style={{ /* aspectRatio: "0.8" */ }}>
               <img
                 referrerPolicy="no-referrer"
                 loading="lazy"
@@ -65,7 +64,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
 };
 
 type PageRef = HTMLDivElement | null;
-type PageProps = { manga: any; chapters: any; result: any };
+interface PageProps { manga: any; chapters: any; result: any };
 
 const Pages = forwardRef<PageRef, PageProps>(function Pages(
   { manga, chapters, result },

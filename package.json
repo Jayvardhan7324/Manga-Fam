@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 5000",
-    "build": "next build && npm run generate:worker",
+    "build": "next build",
     "start": "next start --port 5000",
-    "lint": "next lint",
-    "generate:worker": "tsc -p service_worker/tsconfig.json"
+    "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",

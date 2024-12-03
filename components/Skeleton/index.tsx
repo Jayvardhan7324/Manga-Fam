@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { ModeContext } from '../../hooks/theme_provider'
 import classname from 'classnames'
 
-const MangaChapters = () => {
+const MangaChapters = memo(function mangaChanpters() {
   const array = new Array(15).fill(0)
   return (
     <ModeContext.Consumer>
@@ -18,9 +19,9 @@ const MangaChapters = () => {
       )}
     </ModeContext.Consumer>
   )
-}
+})
 
-const MangaCover = () => {
+const MangaCover = memo(function mangaCover() {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
@@ -35,9 +36,9 @@ const MangaCover = () => {
       )}
     </ModeContext.Consumer>
   )
-}
+})
 
-const MangaSlider = ({ index }: { index: number }) => {
+const MangaSlider = memo(function mangaSlider({ index }: { index: number }) {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
@@ -55,9 +56,9 @@ const MangaSlider = ({ index }: { index: number }) => {
       )}
     </ModeContext.Consumer>
   )
-}
+})
 
-const MangaSection = () => {
+const MangaSection = memo(function mangaSection() {
   return (
     <div className="flex flex-col flex-nowrap w-full">
       <div className="flex flex-col flex-nowrap items-center md:flex-row w-full">
@@ -83,6 +84,6 @@ const MangaSection = () => {
       <div className="skeleton w-10/12 rounded-lg h-40 my-4 "></div>
     </div>
   )
-}
+})
 
 export { MangaCover, MangaSlider, MangaChapters, MangaSection }

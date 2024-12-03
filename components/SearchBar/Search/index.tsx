@@ -57,8 +57,8 @@ export default forwardRef<HTMLInputElement, SearchProps>(function Search(
         value={value}
         onInput={handleInput}
         className={classname(
-          "text-custom-gray bg-transparent mx-2 w-full appearance-none outline-none focus:text-primary_black",
-          theme === "LIGHT" ? "" : "text-secondary_white",
+          "text-custom-gray bg-transparent mx-2 w-full appearance-none outline-none ",
+          theme === "LIGHT" ? "focus:text-primary_black" : "text-secondary_white focus:text-d9-white",
         )}
       />
 

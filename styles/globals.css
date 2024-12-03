@@ -322,7 +322,7 @@ button {
 }
 
 .spin {
-  animation: spin 2s linear forwards infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -451,5 +451,9 @@ button {
 
   .manga-card {
     height: 200px;
+  }
+
+  .manga-element {
+    min-width: 120px;
   }
 }

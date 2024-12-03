@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { Provider } from 'react-redux'
 import store from '../../redux/store/manga_store'
 import { ModeContext } from '../../hooks/theme_provider'
@@ -9,19 +10,25 @@ import RecentContainer from '../../components/RecentContainer'
 
 const RecentsPage: NextPage = () => {
   return (
-    <Provider store={store}>
-      <ModeContext.Consumer>
-        {({ theme, toggleTheme }) => (
-          <>
-            <Header { ...{ toggleTheme, mode: theme }} />
-            <Main>
-              <Navigation/>
-              <RecentContainer/>
-            </Main>
-          </>
-        )}
-      </ModeContext.Consumer>
-    </Provider>
+    <>
+      <Head>
+        <title>Recents</title>
+      </Head>
+
+      <Provider store={store}>
+        <ModeContext.Consumer>
+          {({ theme, toggleTheme }) => (
+            <>
+              <Header { ...{ toggleTheme, mode: theme }} />
+              <Main>
+                <Navigation/>
+                <RecentContainer/>
+              </Main>
+            </>
+          )}
+        </ModeContext.Consumer>
+      </Provider>
+    </>
   )
 }
 

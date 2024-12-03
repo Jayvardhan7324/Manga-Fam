@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Logo from "../Logo";
 import Mode from "../Mode";
 
@@ -21,4 +22,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default memo(Header);

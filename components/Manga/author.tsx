@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { type FC, memo } from 'react'
 import classname from 'classnames'
 import { ModeContext } from '../../hooks/theme_provider'
 
@@ -60,4 +60,4 @@ const Author: FC<AuthorType> = ({ loading, author_name, status, publicationDemog
   )
 }
 
-export default Author
+export default memo(Author)

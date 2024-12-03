@@ -2,7 +2,6 @@ import { useRef, useEffect, useState } from "react";
 import classnames from "classnames";
 import Pages from "../Pages";
 import Sidebar from "./Sidebar";
-import FAB from "./FAB";
 import Spinner from "../Pages/spinner";
 import { useGetMangaAndChapters } from "../../hooks/getMangaAndChapters";
 import { useUpdateRecent } from "../../hooks/updateRecents";
@@ -112,7 +111,7 @@ const PageContainer = () => {
                 className={classnames(
                   "w-10 h-10",
                   theme === "LIGHT"
-                    ? "fill-secondary_black"
+                    ? "fill-primary-color"
                     : "fill-secondary_white",
                 )}
               >
