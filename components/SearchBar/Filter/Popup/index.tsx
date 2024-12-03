@@ -17,7 +17,7 @@ const getOptions = (state: any) => ({
   theme: state.main.theme,
 });
 
-type FilterGroupProps = {
+interface FilterGroupProps {
   label: string;
   options: Record<string, boolean>;
   changeSelected: (option: string) => void;
@@ -76,7 +76,7 @@ const FilterGroup: FC<FilterGroupProps> = ({
 
 const FilterPopup = () => {
 
-  const { mode } = useContext(ModeContext) 
+  const context = useContext(ModeContext) 
 
   const dispatch = useDispatch();
   const options = useSelector(getOptions);
@@ -118,11 +118,11 @@ const FilterPopup = () => {
 
   return (
     <section
-      data-dark={mode === "DARK"}
+      data-dark={context.theme === "DARK"}
       className="rounded-lg relative overflow-y-scroll h-full md:max-h-[400px] bg-[var(--primary-color)] data-[dark=true]:bg-secondary_black shadow-lg"
     >
       <div
-        data-dark={mode === "DARK"}
+        data-dark={context.theme === "DARK"}
         className="sticky top-0 left-0 z-20 flex flex-row flex-nowrap items-center px-1 py-2 justify-end bg-[var(--primary-color)] data-[dark=true]:bg-secondary_black"
       >
         <button

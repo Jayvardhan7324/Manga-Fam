@@ -39,13 +39,13 @@ const MangaCover: FC<MangaCoverProps> = ({ manga }) => {
       {({ theme }) => (
         <div 
           className={classname(
-            "flex flex-col flex-nowrap manga-element p-2 w-min rounded-lg",
+            "flex flex-col flex-nowrap manga-element p-2 rounded-lg",
             theme === "LIGHT" ? "hover:bg-d9-white" : "hover:bg-secondary_black"
           )} 
           title={_title}
 
         >
-          <Link href={`/manga/${id}`}>
+          <Link className="w-full" href={`/manga/${id}`}>
             <div className="rounded-md manga-card overflow-hidden">
               <Cover low={low_cover} high={high_cover} />
             </div>
@@ -53,7 +53,7 @@ const MangaCover: FC<MangaCoverProps> = ({ manga }) => {
 
           <span 
             className={classname(
-              "text-ellipsis flex flex-row flex-nowrap mt-1 break-words min-w-0 font-bold max-h-10 h-min overflow-hidden",
+              "text-ellipsis flex flex-row flex-nowrap mt-1 break-words min-w-0 max-w-[180px] font-bold max-h-10 h-min overflow-hidden",
               theme === "LIGHT" ? "text-black" : "text-d9-white"
             )}
           >

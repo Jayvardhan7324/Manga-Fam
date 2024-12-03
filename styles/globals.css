@@ -214,9 +214,16 @@ button {
   }
 }
 
+/* .manga-card { */
+/*   width: 180px; */
+/*   aspect-ratio: 0.6; */
+/* } */
+
 .manga-card {
-  width: 180px;
-  aspect-ratio: 0.6;
+  width: 100%;
+  max-width: 180px;
+
+  height: 230px;
 }
 
 .manga-element {
@@ -353,6 +360,15 @@ button {
   transition: background-position 0.2s linear;
 }
 
+.manga__container {
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: repeat(1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 4px;
+}
+
 @media screen and (max-width: 750px) {
   body {
     height: 100%;
@@ -373,10 +389,10 @@ button {
     overscroll-behavior: none;
   }
 
-  .manga-card {
-    width: 100px;
-    min-width: 0px;
-  }
+  /* .manga-card { */
+  /*   width: 100px; */
+  /*   min-width: 0px; */
+  /* } */
 
   .skeleton-card {
     width: 100px;
@@ -409,11 +425,31 @@ button {
     width: 118px !important;
     height: 220px !important;
   }
+
+  .manga__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media screen and (max-width: 1000px) {
   .favourite_item {
     width: 190px;
     height: 320px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .manga__container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .manga__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .manga-card {
+    height: 200px;
   }
 }

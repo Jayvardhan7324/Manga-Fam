@@ -19,12 +19,13 @@ const Container = () => {
   return (
     <ModeContext.Consumer>
       {({ theme }) => (
-        <div className="overflow-y-auto" style={{ backgroundColor: "var(--primary-bg-color)"}}>
-          {/* <Slider/> */}
+        <div className="relative w-full overflow-y-auto" style={{ backgroundColor: "var(--primary-bg-color)"}}>
+
+          {/* Banner */}
           <Banner/>
 
           <Tags { ...{ theme }} />
-          <main className="flex flex-row flex-wrap py-2 mx-auto sm:mx-0">
+          <main className="manga__container py-2">
     
             {loading ? (
               array.map((_, index) => (
