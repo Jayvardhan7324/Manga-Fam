@@ -49,7 +49,9 @@ const Banner = ({ manga, prevBut, nextBut }: IBannerProps) => {
       {/* Previous Button */}
       {prevBut}
 
+
       <img
+        referrerPolicy='no-referrer'        
         src={high_image}
         alt={title.en}
         className="-z-10 absolute top-0 left-0 w-full h-full object-cover object-left-top"
