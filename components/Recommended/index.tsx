@@ -36,8 +36,8 @@ const Recommended: FC<RecommendedType> = ({ manga, loading }) => {
             ) : (
               mangas.length > 0 ? (
                 mangas.map((item, index) => (
-                  <div className="max-w-[200px]">
-                    <MangaCover key={index} manga={item} />
+                  <div key={index} className="max-w-[200px]">
+                    <MangaCover manga={item} />
                   </div>
                 ))
               ) : null
