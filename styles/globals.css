@@ -221,18 +221,13 @@ button {
 
 .manga-card {
   width: 100%;
-  max-width: 180px;
+  /* max-width: 180px; */
 
-  height: 230px;
+  /* height: 230px; */
 }
 
 .manga-element {
   max-height: 400px;
-}
-
-.skeleton-card {
-  width: 180px;
-  height: 250px;
 }
 
 .main_wrapper {
@@ -366,7 +361,7 @@ button {
   display: grid;
   grid-template-rows: repeat(1fr);
   grid-template-columns: repeat(6, 1fr);
-  grid-gap: 4px;
+  grid-gap: 8px;
 }
 
 @media screen and (max-width: 750px) {
@@ -394,10 +389,10 @@ button {
   /*   min-width: 0px; */
   /* } */
 
-  .skeleton-card {
-    width: 100px;
-    height: 166px;
-  }
+  /* .skeleton-card { */
+  /*   width: 100px; */
+  /*   height: 166px; */
+  /* } */
 
   .slider_card {
     width: calc(100vw - 30px);
@@ -428,6 +423,7 @@ button {
 
   .manga__container {
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 4px;
   }
 }
 
@@ -441,12 +437,14 @@ button {
 @media screen and (max-width: 720px) {
   .manga__container {
     grid-template-columns: repeat(6, 1fr);
+    grid-gap: 4px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .manga__container {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4px;
   }
 
   .manga-card {

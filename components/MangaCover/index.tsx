@@ -60,7 +60,7 @@ const MangaCover: FC<MangaCoverProps> = ({ manga }) => {
 
         >
           <Link className="w-full" href={`/manga/${id}`}>
-            <div className="rounded-md manga-card overflow-hidden">
+            <div style={{ aspectRatio: 0.8 }} className="rounded-md manga-card overflow-hidden">
               <Cover low={low_cover} high={high_cover} />
             </div>
           </Link>

@@ -121,13 +121,30 @@ const MangaSection: FC<MangaProps> = ({ loading, manga }) => {
           <div className="flex-shrink-1 flex flex-col flex-nowrap">
             <NavLink {...{ manga }} />
             <section
-              style={{
-                background: cover_art ?
-                  `${theme === "DARK" ? "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))" : "linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4))"}, url(https://uploads.mangadex.org/covers/${id}/${cover_art.attributes.fileName}.512.jpg) ` 
-                  : ""
-              }}
-              className="flex-grow-1 w-full rounded-md"
+              // style={{
+              //   background: cover_art ?
+              //     `${theme === "DARK" ? "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))" : "linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4))"}, url(https://uploads.mangadex.org/covers/${id}/${cover_art.attributes.fileName}.512.jpg) ` 
+              //     : ""
+              // }}
+              className="relative flex-grow-1 w-full rounded-md"
             >
+
+              {/* Background Image */}
+              <div className="absolute top-0 left-0 w-full h-full -z-10">
+                <div
+                  style={{
+                    background: `${theme === "DARK" ? "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3))" : "linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.3))"}`
+                  }}
+                  className="w-full h-full absolute top-0 left-0 "
+                >
+                </div>
+                <img
+                  referrerPolicy="no-referrer"
+                  src={`https://uploads.mangadex.org/covers/${id}/${cover_art.attributes.fileName}.512.jpg`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               <div className="flex flex-col flex-nowrap md:flex-row lg:flex-row">
                 <MangaCover {...{ loading, manga }} />
 

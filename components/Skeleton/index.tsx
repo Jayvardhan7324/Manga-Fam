@@ -27,8 +27,9 @@ const MangaCover = memo(function mangaCover() {
       {({ theme }) => (
         <div 
           role="skeleton placeholder"
+          style={{ aspectRatio: 0.8 }}
           className={classname(
-            "w-28 h-32 m-2 rounded-lg skeleton skeleton-card",
+            "w-full rounded-lg skeleton",
           )}
         >
 

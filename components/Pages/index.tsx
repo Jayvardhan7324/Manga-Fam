@@ -45,11 +45,12 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
               </button>
             </div>
           ) : (
-            <div className="relative w-full" style={{ /* aspectRatio: "0.8" */ }}>
+            <div className="relative w-full">
               <img
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 alt=""
+                class="object-contain w-full h-full"
                 src={dataSaver}
                 srcSet={`${dataSaver} 300w, ${data} 600w`}
                 sizes={`(max-width: 600px) 300px, 600px`}
