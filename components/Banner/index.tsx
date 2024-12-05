@@ -37,7 +37,7 @@ const Banner = ({ manga, prevBut, nextBut }: IBannerProps) => {
       low_image: `${MANGADEX_UPLOADS}${id}/${filename}.256.jpg`,
       high_image: `${MANGADEX_UPLOADS}${id}/${filename}.512.jpg`,
     }
-  }, [cover_art])
+  }, [cover_art, id])
 
   return (
     <div

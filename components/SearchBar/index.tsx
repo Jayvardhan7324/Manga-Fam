@@ -14,8 +14,9 @@ const SearchBar = () => {
   const [loading, results] = useGetSearchResults(searchText)
 
   useEffect(() => {
+    const searchInput = searchInputRef.current
+
     const onInputFocused = () => {
-      console.log("focused")
       changeFocus(true)
     }
 
@@ -23,19 +24,19 @@ const SearchBar = () => {
       changeFocus(false)
     }
 
-    if (searchInputRef.current) {
-      searchInputRef.current.addEventListener("focus", onInputFocused, false);
-      searchInputRef.current.addEventListener("blur", onInputBlur, false);
+    if (searchInput) {
+      searchInput.addEventListener("focus", onInputFocused, false);
+      searchInput.addEventListener("blur", onInputBlur, false);
     }
 
     return () => {
-      if (searchInputRef.current) {
-        searchInputRef.current.removeEventListener("focus", onInputFocused, false);
-        searchInputRef.current.removeEventListener("blur", onInputBlur, false);
+      if (searchInput) {
+        searchInput.removeEventListener("focus", onInputFocused, false);
+        searchInput.removeEventListener("blur", onInputBlur, false);
       }
     }
 
-  }, [searchInputRef.current])
+  }, [])
 
   return (
     <ModeContext.Consumer>

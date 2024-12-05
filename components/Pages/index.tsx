@@ -50,7 +50,7 @@ const MangaPage: FC<MangaPageType> = ({ data, dataSaver, index }) => {
                 referrerPolicy="no-referrer"
                 loading="lazy"
                 alt=""
-                class="object-contain w-full h-full"
+                className="object-contain w-full h-full"
                 src={dataSaver}
                 srcSet={`${dataSaver} 300w, ${data} 600w`}
                 sizes={`(max-width: 600px) 300px, 600px`}

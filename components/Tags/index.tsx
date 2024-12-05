@@ -17,7 +17,7 @@ const Tags = ({ theme }: { theme: "LIGHT" | "DARK" }) => {
 
     // refresh the mangas
     dispatch(refreshManga());
-  }, [tag_array, dispatch, updatedTags]);
+  }, [tag_array, dispatch]);
 
   return (
     <Swipper

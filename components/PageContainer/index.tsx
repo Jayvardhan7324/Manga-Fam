@@ -27,12 +27,13 @@ const PageContainer = () => {
   };
 
   useEffect(() => {
-    const scrollOnActiveChange = () => {
-      if (containerRef.current && pageRef.current) {
-        const container = containerRef.current;
-        const pageContainer = pageRef.current;
+    const container = containerRef.current
+    const page = pageRef.current
 
-        const children = pageContainer.children;
+    const scrollOnActiveChange = () => {
+      if (container && page) {
+
+        const children = page.children;
 
         for (let i = 0; i < children.length; i++) {
           const child = children[i] as HTMLElement;
@@ -60,14 +61,15 @@ const PageContainer = () => {
     };
 
     scrollOnActiveChange();
-  }, [active]);
+  }, [active, lockScroll]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current && pageRef.current && !lockScroll) {
-        const pageContainer = pageRef.current;
+    const container = containerRef.current
+    const page = pageRef.current
 
-        const children = pageContainer.children;
+    const handleScroll = () => {
+      if (container && page && !lockScroll) {
+        const children = page.children;
 
         for (let i = 0; i < children.length; i++) {
           const child = children[i] as HTMLElement;
@@ -85,14 +87,14 @@ const PageContainer = () => {
       }
     };
 
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll, true);
+    if (container) {
+      container.addEventListener("scroll", handleScroll, true);
     }
 
     return () => {
-      containerRef.current?.removeEventListener("scroll", handleScroll, true);
+      container && container.removeEventListener("scroll", handleScroll, true);
     };
-  }, [containerRef]);
+  }, [active, lockScroll]);
 
   useUpdateRecent(manga, chapters);
 
